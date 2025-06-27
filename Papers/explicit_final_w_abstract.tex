@@ -1,0 +1,2331 @@
+%this is, as of today April 27, 2010, the final
+%version of our paper entitled
+%Overconvergent modular symbols and $p$-adic $L$-functions
+
+
+\documentclass{amsart}
+\usepackage{amsmath,amsthm,amssymb}
+\theoremstyle{plain}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{conj}[thm]{Conjecture}
+
+%Letters
+\newcommand{\A}{{\mathcal A}}
+\newcommand{\bA}{{\bf A}}
+\newcommand{\D}{{\mathcal D}}
+\newcommand{\bD}{{\bf D}}
+\newcommand{\E}{{\mathcal E}}
+\newcommand{\F}{{\mathcal F}}
+\newcommand{\K}{{\mathcal K}}
+\renewcommand{\O}{{\mathcal O}}
+\newcommand{\p}{{\mathfrak p}}
+\newcommand{\M}{{\mathcal M}}
+\newcommand{\U}{{\mathcal U}}
+\renewcommand{\S}{{\mathcal S}}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\oo}{\text{o}}
+\newcommand{\OO}{\text{O}}
+\renewcommand{\H}{\mathcal H}
+\newcommand{\w}{\omega}
+
+%Number systems
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\Fp}{{\mathbb F}_p}
+\newcommand{\Fpbar}{\overline{\mathbb F}_p}
+\newcommand{\Qpbar}{\overline{{\Q}}_p}
+\newcommand{\Qbar}{\overline{{\Q}}}
+\newcommand{\Obar}{\overline{\O}}
+\newcommand{\pbar}{\overline{{\mathfrak p}}}
+\newcommand{\OK}{{\mathcal O}_K}
+\renewcommand{\P}{{\mathbb P}}
+\newcommand{\Zp}{\Z_p}
+\newcommand{\Zpx}{\Z_p^\times}
+\newcommand{\Qpx}{\Q_p^\times}
+\newcommand{\Cpx}{\C_p^\times}
+\newcommand{\Qp}{\Q_p}
+\newcommand{\Cp}{\C_p}
+
+%Maps
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\maps}{\rightarrow}
+\newcommand{\lra}{\longrightarrow}
+
+%Matrices
+\newcommand{\mat}{\begin{pmatrix} a & b \\ c & d \end{pmatrix}}
+\newcommand{\smallmat}{\bigl( \begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \bigr)}
+\newcommand{\sigop}{\Sigma_0(p)}
+\newcommand{\sop}{S_0(p)}
+\newcommand{\psmallmat}[4]{\left( \begin{smallmatrix} #1 & #2 \\ #3 & #4 \end{smallmatrix} \right)}
+\newcommand{\pmat}[4]{\left( \begin{matrix} #1 & #2 \\ #3 & #4 \end{matrix} \right)}
+\newcommand{\bap}{\beta(a,p)}
+\newcommand{\bapn}{\beta(a,p^n)}
+
+
+%Random
+\newcommand{\wt}{\widetilde}
+\newcommand{\ol}{\overline}
+\renewcommand{\binom}[2]{\genfrac{(}{)}{0pt}{}{#1}{#2}}
+\newcommand{\Dinf}{\{0\} - \{\infty\}}
+\renewcommand{\sp}{{\rho^*_k}}
+\newcommand{\spd}{{\rho_k}}
+\newcommand{\olsp}{{\ol{\rho}^*_k}}
+
+%Spaces
+\newcommand{\Arigv}[1]{\bA[#1]}
+\newcommand{\Avrigv}[2]{\bA_{#1}[#2]}
+\newcommand{\Drigv}[1]{\bD[#1]}
+\newcommand{\Dvrigv}[2]{\bD_{#1}[#2]}
+\newcommand{\Dvrig}[1]{\bD_{#1}}
+\newcommand{\Drig}{\bD}
+\newcommand{\Dkrig}{\Dvrig{k}}
+
+\newcommand{\Avocv}[2]{\A_{#1}^\dag(\Zp,#2)}
+\newcommand{\Avoc}[1]{\A_{#1}^\dag(\Zp,1)}
+\newcommand{\Aocv}[1]{\A^\dag(\Zp,#1)}
+\newcommand{\Akoc}{\Avoc{k}}
+\newcommand{\Aoc}{\Aocv{1}}
+\newcommand{\Dvocv}[1]{\D_{#1}^\dag(\Zp,#1)}
+\newcommand{\Dvoc}[1]{\D_{#1}^\dag(\Zp,1)}
+\newcommand{\Docv}[1]{\D^\dag(\Zp,#1)}
+\newcommand{\Dkocv}[1]{\D^\dag(\Zp,#1)}
+\newcommand{\Dkoc}{\D_k^\dag}
+\newcommand{\Doc}{\D^\dag}
+
+
+\newcommand{\Ala}{\A(\Zp)}
+\newcommand{\Avla}[1]{\A_{#1}(\Zp)}
+\newcommand{\Akla}{\Avla{k}}
+\newcommand{\Dvla}[1]{\D_{#1}(\Zp)}
+\newcommand{\Dla}{\D(\Zp)}
+\newcommand{\Dkla}{\Dvla{k}}
+\newcommand{\Dk}{\D_{k}}
+
+\newcommand{\FkM}{\F_k(M)}
+
+
+
+%Math Operators
+\DeclareMathOperator{\Div}{Div} 
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ord}{ord} 
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\GL}{GL} 
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\PSL}{PSL} 
+\DeclareMathOperator{\Symb}{Symb}
+\DeclareMathOperator{\Sym}{Sym} 
+\DeclareMathOperator{\coker}{coker} 
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\trunc}{trunc}
+\DeclareMathOperator{\nil}{nil}
+
+%Modular Symbols
+\newcommand{\MS}[1]{\Symb_{\Gamma}(#1)}
+\newcommand{\MSo}[1]{\Symb_{\Gamma_0}(#1)}
+\newcommand{\Pfl}{\Phi_{f,\lambda}}
+
+
+\title[Overconvergent modular symbols]{Overconvergent modular symbols and $p$-adic $L$-functions}
+
+\author{Robert Pollack}
+\address{Department of Mathematics and Statistics,  111 Cummington Street, 
+Boston University,  Boston MA 02215, USA}
+\email{rpollack@math.bu.edu}
+\thanks{The first author was supported by NSF grant DMS-0701153.}
+
+\author{Glenn Stevens}
+\address{Department of Mathematics and Statistics,  111 Cummington Street, 
+Boston University,  Boston MA 02215, USA}
+\email{ghs@math.bu.edu}
+\thanks{The second author was supported by NSF grant DMS-0071065.}
+\subjclass[2000]{Primary 11F67}
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+ Cet article est exploration constructive des rapports entre les
+ symboles modulaires classique et les symboles modulaires $p$-adiques
+ surconvergents. Plus pr\'ecis\'ement, on donne une preuve constructive
+ d'un theor\`eme de controle (Theoreme \ref{thm:comp_intro}) du deuxi\'eme auteur \cite{Stevens}; ce theor\'eme preuve l'existence et l'unicit\'e des ``liftings propres" des
+ symboles propres modulaires classiques de pente non-critique. En tant
+ qu'application nous d\'ecrivons un algorithme en temps polynomial pour
+ la calculation explicite des fonctions $L$ $p$-adiques associ\'ees dans ce
+ cas-l\`a. Dans le cas de pente critique, le theor\`eme de controle \'echoue
+ toujours de produire des ``liftings propres" (voire Theoreme  \ref{thm:criticalslope} 
+ et \cite{PS} pour une r\'ecup\'eration), mais l'algorithme ``r\'eussit" n\'eanmoins de
+ produire des fonctions $L$ $p$-adiques. Dans les deux derni\`eres sections
+ nous pr\'esentons des donn\'ees num\'eriques pour plusieurs exemples de
+ pente critique et examinons le polygone de Newton des fonctions $L$
+ $p$-adiques associ\'ees.
+\end{abstract}
+
+
+\begin{abstract}
+This paper is a constructive investigation of the relationship between classical modular symbols and overconvergent $p$-adic 
+modular symbols.  Specifically, we give a constructive proof of a {\it control theorem} (Theorem \ref{thm:comp_intro}) due to the second author \cite{Stevens} proving existence and uniqueness of overconvergent eigenliftings of classical modular eigensymbols of {\it non-critical slope}.  As an application we
+describe a polynomial-time algorithm for explicit computation of associated $p$-adic $L$-functions in this case.   In the case of {\it critical slope}, the control theorem fails to always produce eigenliftings (see Theorem \ref{thm:criticalslope} and \cite{PS} for a salvage), but the algorithm still ``succeeds" at producing $p$-adic $L$-functions.   In the final two sections we present numerical data in several critical slope examples and examine the Newton polygons of the associated $p$-adic $L$-functions. 
+\end{abstract}
+
+
+\section{Introduction}
+
+Fix a prime $p$, and let $\Gamma \subseteq \SL_2(\Z)$ denote a congruence subgroup of level prime to $p$.  For $k$ a non-negative integer, let $\Dkla$ denote the space of locally analytic $p$-adic distributions on $\Zp$ endowed with the weight $k$ action\footnote{In this paper, we will consider {\it right} actions on $\Dkla$; moreover, we normalize our weights so that weight 0 corresponds to the trivial action (and thus to weight 2 modular forms).}  of $\Gamma_0 := \Gamma \cap \Gamma_0(p)$.  In \cite{Stevens}, the second author introduced the space of overconvergent modular symbols, $\MSo{\Dkla}$; this is the space of $\Gamma_0$-equivariant maps from $\Delta_0 := \Div^0(\P^1(\Q))$ to $\Dkla$:
+$$
+\left\{ \Phi : \Delta_0 \to \Dkla ~:~ \Phi(\gamma D) = \Phi(D) \big| \gamma^{-1} \text{~for~} \gamma \in \Gamma_0, ~D \in \Delta_0 \right\}.
+$$
+The space $\Dkla$ admits a surjective map to $\Sym^k(\Qp^2)$ inducing a Hecke-equivariant map 
+$$
+\MSo{\Dkla} \lra \MSo{\Sym^k(\Qp^2)},
+$$
+which we refer to as the {\it specialization map}.  
+
+The target of this map is the space of classical modular symbols of level $\Gamma_0$ and weight $k$.  By Eichler-Shimura theory, this space is finite-dimensional and contains all systems of Hecke-eigenvalues which occur in the space of classical modular forms of weight $k+2$ and level $\Gamma_0$.  On the other hand, the source of the specialization map $\MSo{\Dkla}$ is certainly an infinite-dimensional space.  Nonetheless, in \cite{Stevens}, the following control theorem is given for the specialization map, which can be viewed as an analogue of Coleman's theorem on small slope overconvergent forms being classical (see also \cite{PS}).
+
+\begin{thm}
+\label{thm:comp_intro}
+The specialization map restricted to the subspace where $U_p$ acts with slope strictly less that $k+1$
+$$
+\MSo{\Dkla}^{(<k+1)} \lra  \MSo{\Sym^{k}(\Qp^2)}^{(<k+1)}
+$$
+is a Hecke-equivariant isomorphism.  
+\end{thm}
+
+The main goal of this paper is to provide an explicit enough description of these spaces of overconvergent modular symbols to:
+\begin{enumerate}
+\item give a constructive proof of the above theorem (see Theorem \ref{thm:comparison}), and 
+\item perform explicit computations in these spaces, constructing overconvergent Hecke-eigensymbols.
+\end{enumerate}
+
+
+\subsection{Explicit description of modular symbols}
+
+Our first step in explicitly constructing overconvergent modular symbols is to give a simple description of $\Delta_0 = \Div^0(\P^1(\Q))$ as a left $\Z[\Gamma]$-module in terms of generators and relations for $\Gamma$, any finite index subgroup of $\SL_2(\Z)$.  
+
+In the case when $\Gamma$ is torsion-free (which we will assume for the remainder of the introduction), we will be able to find divisors $D_1, D_2,\dots, D_t \in \Delta_0$ such that together with  $D_\infty := \{ \infty \} - \{0\}$, they generate $\Delta_0$, and satisfy the single relation
+$$
+\left(\psmallmat{1}{-1}{0}{1} - 1\right) D_\infty = 
+\sum_{i=1}^t (1-\gamma_i^{-1}) D_i
+$$
+for some $\gamma_i \in \Gamma$ (see Theorem \ref{thm:gen}).
+
+To ``solve the Manin relations" in such a way that we have only a single relation, we make use of a fundamental domain for the action of $\Gamma$ on the upper-half plane with a particular nice shape; we form a fundamental domain whose interior is connected, and whose boundary is a union of unimodular paths.  
+
+Having this single relation in hand, one can construct a symbol $\varphi \in \MS{V}$, where $V$ is an arbitrary right $\Z[\Gamma]$-module, by producing elements $v_1, \dots, v_t, v_\infty$ in $V$ satisfying 
+$$
+v_\infty \big| \Delta = \sum_{i=1}^t v_i \big| (1-\gamma_i)
+$$
+where $\Delta = \psmallmat{1}{1}{0}{1} - 1$.  One simply sets $\varphi(D_i) = v_i$, and then extends to all of $\Delta_0$.
+
+Note that to be able to write down such elements in $V$, one needs to be able to solve an equation of the form 
+$$
+v_\infty  \big| \Delta = w,
+$$ 
+which we will refer to as the {\it difference equation}.
+
+\subsection{Distributions, moments, and the difference equation}
+
+The span of the functions $\{ z^j \}_{j=0}^\infty$ is dense in the space of locally analytic functions on $\Zp$.  In particular, a distribution $\mu \in \Dkla$ is uniquely determined by the values $\{ \mu(z^j) \}_{j=0}^\infty$, its sequence of moments.  
+
+Using this description of a distribution by its sequence of moments, one can write down an explicit solution to the difference equation in these spaces of distributions.  Specifically, let $\nu_j$ be the simple distribution defined by
+$$
+\nu_j(z^r)  =  \begin{cases} 1 & \text{if~} r=j \\ 0 & \text{otherwise}, \end{cases}
+$$
+and let $\eta_j \in \Dkla$ be defined by
+$$
+\eta_j(z^r)  =  \begin{cases} \binom{r}{j} b_{r-j} & \text{if~} r \geq j \\ 0 & \text{otherwise}, \end{cases}
+$$
+where $b_n$ is the $n$-th Bernoulli number.
+We then have (see Lemma \ref{lemma:eta})
+$$
+\frac{\eta_j \big| \Delta}{j+1}  = \nu_{j+1}.
+$$
+One obtains a general solution of the difference equation by combining these basic solutions.\footnote{The denominators that appear in this solution could potentially cause a problem.  It is primarily for this reason that in the text of the paper we work with $\Dkoc$, a larger space of distributions.} It is interesting that Bernoulli numbers play such a key role in this solution.
+
+\subsection{Sketch of a proof of Theorem \ref{thm:comp_intro}}
+
+Let $\varphi$ in $\MSo{\Sym^k(\Qp^2)}$ be an eigensymbol of slope strictly less than $k+1$.  By combining our explicit solution of the Manin relations together with our solution of the difference equation, we can explicitly compute an overconvergent modular symbol $\Psi$ lifting $\varphi$. To produce an {\it eigensymbol} lifting $\varphi$, we consider the sequence
+$$
+\Psi_n := \frac{\Psi \big| U_p^n}{\lambda^n} 
+$$ 
+where $\lambda$ is the $U_p$-eigenvalue of $\varphi$.  Since the specialization map is Hecke-equivariant, $\Psi_n$ also lifts $\varphi$.  Then, using the fact that the valuation of $\lambda$ is strictly less than $k+1$, we show that $\{ \Psi_n \}$ converges to some symbol $\Phi$, which still lifts $\varphi$.  By construction, $\Phi$ is a $U_p$-eigensymbol with eigenvalue $\lambda$, and is thus the symbol we are seeking. 
+
+
+\subsection{Connection with $p$-adic $L$-functions}
+We note that overconvergent Hecke-eigensymbols are directly related to  $p$-adic $L$-functions.  Indeed, let $f$ be a classical modular form on $\Gamma_0$ of non-critical slope ({\it i.e.}\ with slope strictly less than $k+1$), and let $\varphi_f$ denote its corresponding classical modular symbol.  As $f$ is assumed to have non-critical slope, by Theorem \ref{thm:comp_intro}, there is a unique symbol $\Phi_f$ in $\MSo{\Dkla}^{(<k+1)}$ which specializes to $\varphi_f$.   It is proven in \cite{Stevens} that 
+$$
+\Phi_f\left( \{ \infty \} - \{0\}\right) = L_p(f),
+$$
+the $p$-adic $L$-function of $f$ (see also Theorem \ref{prop:OMStoPL} in this paper).  
+
+Thus, the above proof of Theorem \ref{thm:comp_intro} can be converted into an algorithm for computing $p$-adic $L$-functions.
+Indeed, starting with a modular form $f$, using standard methods, one can produce its corresponding modular symbol $\varphi_f$.  As described above, one lifts $\varphi_f$ to an overconvergent symbol, and then iterates the operator $U_p/\lambda$ on this lift.  If $f$ is a $p$-ordinary modular form, then each application of $U_p$ yields an extra digit of $p$-adic accuracy.  Evaluating at the divisor $\{ \infty \} - \{ 0 \}$ then gives an approximation to the $p$-adic $L$-function.
+
+We note that computing $p$-adic $L$-functions of modular forms from their definition (i.e.\ by using Riemann sums) requires evaluating a sum with around $p^n$ terms in order to get $n$ digits of $p$-adic accuracy.  Such an algorithm is exponential in $n$, and thus cannot be used to compute these $L$-functions to high accuracy even for small $p$.  The above algorithm is polynomial in $n$ (see \cite[Proposition 2.14]{DP}), and can be used in practice to compute $p$-adic $L$-functions to very high accuracy.
+
+\subsection{Approximating distributions}
+
+We now describe a systematic method of approximating distributions which one needs in order to carry out the algorithm described above.
+
+Recall that $\mu \in \Dkla$ is uniquely determined by its sequence of moments $\{ \mu(z^j) \}$ for $j \geq 0$.  To approximate such a distribution, one might hope to keep track of the first $M$ moments, each modulo $p^N$ for some integers $M,N \gg 0$.  Unfortunately, this approach cannot be used for our purposes because such approximations are not stable under the matrix actions we are considering; that is, if one has the above data for a distribution $\mu$, one cannot compute the same data for the distribution $\mu \big| \gamma$.   Indeed, if $\Dk^0$ denotes subspace of $\mu \in \Dkla$ such that $\mu(z^j) \in \Zp$ for all $j$, then 
+$$
+\{ \mu \in \Dk^0 ~|~ \mu(z^j)=0 \text{~for~} j \geq M\}
+$$
+is not stable under the action of $\Gamma_0$.  However,  the subspace
+$$
+\Fil^M(\Dk^0) := \{ \mu \in \Dk^0 ~|~ \mu(z^j) \in p^{M-j} \Zp\}  
+$$
+is stable under our matrix actions (see Proposition \ref{prop:filt}).  This means that if one knows $\mu(z^j)$ modulo $p^{M-j}$ for $j=0, \dots,M-1$, then the same information can be computed for $\mu \big| \gamma$.  
+
+Thus, to compute with distributions, we work in the finite set $\Dk^0/\Fil^M(\Dk^0)$ which is readily represented on a computer.
+
+\subsection{Critical slope $p$-adic $L$-functions}
+
+In \cite{PS}, a definition of a $p$-adic $L$-function is given for a critical slope cuspidal eigenform $f$ which is not in the image of the $p$-adic $\theta$-operator (see Theorem \ref{thm:criticalslope}).  In that paper, it is proven that there is a unique overconvergent Hecke-eigensymbol lifting $\varphi_f$, and one defines the $p$-adic $L$-function of $f$ to be the value of this symbol at $\{\infty\} - \{0\}$.
+
+In this paper, we carry out numerical experiments for several critical slope forms, and study their associated $p$-adic $L$-functions. The zeroes of these $L$-functions contain some striking patterns, which appear to encode the classical $\mu$- and $\lambda$-invariants of the corresponding ordinary $p$-adic $L$-function (see section \ref{sec:pL}).
+
+Moreover, we carry out some numerical exploration with forms in the image of $\theta$ (specifically forms arising from the critical slope $p$-stabilization of an ordinary CM modular form).  From these computations, it appears that there is no overconvergent Hecke-eigensymbol lifting $\varphi_f$.  However, in the kernel of specialization there is a unique (up to scaling) Hecke-eigensymbol with the same eigenvalues of $f$ in both the plus and minus subspace.
+
+\subsection{Applications and further extensions}
+
+We mention two examples where the algorithms of this paper were used to compute global points on elliptic curves.  
+
+In \cite{DP}, the case of Stark-Heegner points was studied.  Stark-Heegner points are certain $p$-adically defined points on elliptic curves which are conjectured to be global points defined over ring class fields of real quadratic fields (see \cite{D}).  To compute these points one needs to compute the moments of the $p$-adic $L$-function of the corresponding elliptic curve.
+
+In practice, in order to correctly recognize a $p$-adic approximation of a Stark-Heegner point as a global point, one needs to have computed the point to a very high accuracy.  For example, by using overconvergent modular symbols, the moments of the $11$-adic $L$-function of $X_0(11)$ were computed modulo $11^{100}$, and the  following point was found:
+\begin{eqnarray*}
+x &=& 
+1081624136644692539667084685116849, \\
+y &=& -1939146297774921836916098998070620047276215775500 \\
+& & -450348132717625197271325875616860240657045635493 \sqrt{101}.
+\end{eqnarray*}
+In contrast, naively using Riemann sums to compute the relevant moments yields an accuracy of at most $11^{10}$ which is not nearly precise enough to identify the above point.  
+
+In \cite{KP}, the case of rank 1 elliptic curves $E/\Q$ with good supersingular reduction at $p$ was studied.    Assuming the $p$-adic Birch and Swinnerton-Dyer conjecture for {\it both} $p$-adic $L$-functions attached to $E$, one can relate the derivative of these $p$-adic $L$-functions to a point of infinite order in $E(\Q)$.  Overconvergent modular symbols were then used to compute these derivatives to high enough $p$-adic accuracy to recognize the corresponding global point.  As opposed to the previous example, this is not the best algorithm to compute these points, as classical Heegner points are easier in practice to compute.  Nonetheless, it is interesting to see another purely $p$-adic algorithm which conjecturally computes global points.  
+
+
+We also mention an improvement on the algorithms given in this paper by M.\ Greenberg in the non-critical slope case.  In \cite{MG}, Greenberg gives an algorithm that sidesteps the need to solve the Manin relations, and thus avoids the need to study the geometry of the fundamental domain for the action of $\Gamma$.  This improvement allowed for several further generalizations including \cite{Mak} where this improvement was used to compute Stark-Heegner points attached to elliptic curves $E/K$ where $K$ is an imaginary quadratic fields, and in \cite{PP} where constructions of Hecke-eigenclasses for the group $\GL_3(\Q)$ were made.  In both of these cases, the geometry present was extremely complicated, making a direct solution of the Manin relations a daunting task.
+
+\subsection{Outline}
+In the following section, after setting up the basic definitions of modular symbols, we study a fundamental domain for the action of $\Gamma$, and give a geometric solution of the Manin relations.  In the third section, we introduce the relevant spaces of $p$-adic distributions, and in the fourth section, we study the difference equation for these spaces.  In the fifth section, we introduce the notion of overconvergent modular symbols, and give a proof of Theorem \ref{thm:comp_intro}.  In the sixth section, we study the connection with $p$-adic $L$-functions.  In the seventh section, we introduce the notion of finite approximation modules which allow for systematic approximations of distributions.  In the eighth section, we give algorithms for constructing overconvergent eigensymbols, and report on several examples.  In the ninth and final section, the case of critical slope $p$-adic $L$-functions is considered,  and data on the zeroes of these functions is studied.   
+
+\section{Modular symbols}
+\label{sec:ms}
+
+\subsection{Basic definitions}
+
+We begin by introducing the notion of modular symbols as defined in \cite{AshStevens86}.  To this end, let $\Delta_0 := \Div^0(\P^1(\Q))$ denote the set of degree zero divisors on $\P^1(\Q)$.  Then $\Delta_0$ (the Steinberg module) has the structure of a left $\Z[\GL_2(\Q)]$-module where $\GL_2(\Q)$ acts via linear fractional transformations.
+
+Let $\Gamma$ be a finite index subgroup of $\PSL_2(\Z)$, and let $V$ be a right $\Z[\Gamma]$-module.  We endow the set of additive homomorphisms $\Hom(\Delta_0,V)$ with the structure of a right $\Gamma$-module by defining
+$$
+(\varphi\big| \gamma)(D) := \varphi(\gamma D)\big| \gamma
+$$
+for $\varphi : \Delta_0 \maps V$, $D \in \Delta_0$ and $\gamma \in \Gamma$. 
+
+For $\varphi$ in $\Hom(\Delta_0,V)$, we say that $\varphi$ is a {\it $V$-valued modular symbol} on $\Gamma$ if $\varphi \big| \gamma = \varphi$ for all $\gamma \in \Gamma$; we denote the space of all $V$-valued modular symbols by $\MS{V}$.  Thus, for an additive homomorphism $\varphi : \Delta_0 \maps V$,
+$$
+\varphi \in \MS{V} \iff \varphi(\gamma D) = \varphi(D) \big| \gamma^{-1}
+\text{~for~all~} \gamma \in \Gamma.
+$$
+
+We remark that if $\H$ denotes the upper-half plane and $\widetilde{V}$ is the associated locally constant sheaf of $V$ on $\H/\Gamma$, then there is a canonical isomorphism 
+$$
+\MS{V} \cong H^1_c(\H / \Gamma,\widetilde{V}),
+$$
+provided that the order of any torsion element of $\Gamma$ acts invertibly on $V$ (see  \cite[Prop 4.2]{AshStevens86}).  In this paper, we however focus on the explicit description of modular symbols given by maps rather than by cohomology classes.
+
+The modules $V$ considered in this paper will have the addition structure of a right action by $\sop$ where
+$$
+\sop := \left\{  \smallmat \in M_2(\Z) \text{~such~that~} (a,p) =1,~ p|c \text{~and~} ad-bc \neq 0 \right\}.
+$$
+Given this additional structure, one can define a Hecke-action on $\MS{V}$; if $\ell$ is a prime, then the Hecke operator $T_\ell$ is given by the double coset $\Gamma \psmallmat{1}{0}{0}{\ell} \Gamma$.  For example, if $\Gamma = \Gamma_0(N)$ and $\ell \nmid N$, then 
+$$
+\varphi | T_\ell = \varphi|\psmallmat{\ell}{0}{0}{1} +
+\sum_{a=0}^{l-1} \varphi | \psmallmat{1}{a}{0}{\ell}.
+$$
+If $q | N$, we write $U_q$ for $T_q$, and we have
+$$
+\varphi | U_q = \sum_{a=0}^{q-1} \varphi |
+\psmallmat{1}{a}{0}{q}.
+$$
+
+We further remark that when $\psmallmat{-1}{0}{0}{1}$ normalizes $\Gamma$, this matrix acts as an involution on $\MS{V}$.  When $2$ acts invertibly on $V$, we then have a natural decomposition 
+$$\MS{V} \cong \MS{V}^+ \oplus \MS{V}^-$$ 
+into $\pm 1$-eigenspaces for this action.
+
+
+\subsection{The Manin relations}
+\label{sec:manin}
+In this section, we review the Manin relations which give a description of $\Delta_0$ as a $\Z[\Gamma]$-module in terms of generators and relations.  In subsequent sections, we will ``solve the Manin relations" and give a simple presentation of $\Delta_0$;  when $\Gamma$ is torsion-free this presentation will have only one relation.
+
+Let $\GL^+_2(\Q)$ denote the subgroup of $\GL_2(\Q)$ consisting of matrices with positive determinant.  If $\gamma = \smallmat \in \GL^+_2(\Q)$, we denote by $[\gamma]$ the singular 1-chain in the extended upper half-plane $\H^*$ represented by the (oriented) geodesic path joining $\frac{a}{c}$ to $\frac{b}{d}$.  We call any such $1$-chain a {\it modular path} and any finite formal sum of such modular paths, a {\it modular $1$-chain}. We denote the $\Z$-module of all such modular chains by
+$$
+Z_1 = Z_1(\H^*,\P^1(\Q)),
+$$
+which we regard as the module of 1-cycles in $\H^*$ relative to $\P^1(\Q)$, the boundary  of $\H^*$.
+
+The group  $\PGL_2^+(\Q)$ acts on $Z_1$ via fractional linear transformation on $\H^*$; hence $Z_1$ is naturally a $\PGL_2^+(\Q)$-module.  If $\beta, \gamma \in \GL_2^+(\Q)$, then we have
+$$
+\beta \cdot [\gamma] = [ \beta \gamma].
+$$
+The boundary map gives a surjective $\PGL_2^+(\Q)$-morphism
+$$
+\partial : Z_1 \lra \Delta_0.
+$$
+Note that two modular chains $c$ and $c'$ are homologous if $\partial c =
+\partial c'$.  Thus, $\partial$ induces a $\PGL_2^+(\Q)$-isomorphism
+from the one-dimensional relative homology of the pair
+$(\H^*,\P^1(\Q))$ to the Steinberg module $\Delta_0$:
+$$
+\partial : H_1(\H^*,\P^1(\Q);\Z) \stackrel{\sim}{\lra} \Delta_0.
+$$
+
+Let $G = \PSL_2(\Z)$.  A modular path of the form $[\gamma]$ with $\gamma \in G$ is called a {\it unimodular path}, and any finite formal sum of such unimodular paths is called a {\it unimodular 1-chain}. Using continued fractions it is easy to see (and is a well-known result of Manin \cite{Manin}) that every modular chain is homologous to a unimodular chain.  Moreover, $G$ acts transitively on the collection of unimodular paths as the map
+\begin{align*}
+G &\maps Z_1 \\
+\gamma &\mapsto [\gamma]
+\end{align*}
+is a bijection from $G$ to the set of unimodular paths in $Z_1$.  Extending by linearity, we obtain a $G$-morphism $\Z[G] \maps Z_1$, and composing with the boundary map $\partial$, we obtain a surjective $G$-morphism
+$$
+d : \Z[G] \lra \Delta_0.
+$$
+It is a result of Manin \cite{Manin} that $\ker(d)$ is the left ideal
+$$
+I = \Z[G](1 + \tau + \tau^2) + \Z[G](1 + \sigma)
+$$
+where $\sigma$ is the two-torsion element $\psmallmat{0}{-1}{1}{0}$ and 
+$\tau$ is the three-torsion element $\psmallmat{0}{-1}{1}{-1}$.  These are the well-known Manin relations.  Thus, $d$ induces an isomorphism 
+$$\Delta_0 \cong \Z[G]/I.$$
+
+Using this isomorphism, we can give a description of $\Delta_0$ as a $\Z[\Gamma]$-module in terms of generators and relations. Indeed, note that $\Z[G]$ is a free $\Z[\Gamma]$-module; a basis is given by a complete set of right coset representatives of $\Gamma \backslash G$, say $g_1, \dots, g_r$.  The ideal $I$ then gives $\Z[\Gamma]$-relations between these generators. For instance,
+$$
+g_i (1 + \sigma) = g_i + g_i \sigma = g_i + \gamma_{ij} g_j \in I
+$$
+for some $j$ and some $\gamma_{ij} \in \Gamma$.  The triangle relations similarly yield three-term $\Z[\Gamma]$-relations on the $g_i$.
+
+
+\subsection{Fundamental domains}
+
+Let $\Gamma$ be a finite index subgroup of $G = \PSL_2(\Z)$ without any three-torsion.  In this section, we describe an explicit method for producing a fundamental domain $\F$ for the action of $\Gamma$ on $\H^*$ which has a particularly nice shape.  Namely, all of the vertices of $\F$ will be cusps and its boundary will be a union of unimodular paths.  This precise description of $\F$ will enable us (in the following section) to prove that the Manin relations are essentially equivalent to the single relation $\partial \F = 0$ when $\Gamma$ is torsion-free.
+
+\begin{defn}
+\label{def:fd} For $\Gamma \subseteq G$, a {\it fundamental
+domain} for the action of $\Gamma$ on $\H^*$ is a region $\F
+\subseteq \H^*$ such that
+\begin{enumerate}
+\item $\F$ is closed and $\F^\circ$ (the interior of $\F$) is connected;
+\item for each $\gamma \in \Gamma$, $\gamma \F^\circ \cap \F^\circ$ is empty;
+\item $\displaystyle \bigcup_{\alpha \in \Gamma} \alpha \F = \H^*$.
+\end{enumerate}
+If the region $\F$ only satisfies the first two conditions, we
+call this region a {\it potential fundamental domain} for
+$\Gamma$.
+\end{defn}
+
+Consider the ideal triangle $T$ whose vertices are $0$, $\rho = (1 + \sqrt{-3})/2$, and $\infty$, which is a fundamental domain for $G$. The matrix $\tau =\left(\begin{smallmatrix} 0 & -1 \\ 1 & -1 \end{smallmatrix} \right)$ is an order three matrix which fixes $\rho$, sends $0$ to $1$, and $1$ to $\infty$.  Thus, $R = T \cup \tau T \cup \tau^2 T$ is an ideal triangle with vertices $0$, $1$ and $\infty$.  The translates of $R$ under $G$ tile $\H^*$ (since $R$ contains a fundamental domain for $G$).  We will build a fundamental domain for $\Gamma$ out of translates of $R$.
+
+\begin{lemma}
+\label{lemma:extend} Let $\Gamma$ be a subgroup of $G$ without any
+three-torsion, and let 
+$$\displaystyle \F = \alpha_1 R \cup \dots \cup
+\alpha_r R \subseteq \H^*$$ be a potential fundamental domain for the action of $\Gamma$. For $\alpha \in G$, the following are
+equivalent:
+\begin{enumerate}
+\item $\F \cup \alpha R$ is not a fundamental domain for $\Gamma$.
+\item
+Every point in $\alpha R$ is $\Gamma$-equivalent to some point in
+$\F$.
+\item
+For some $i$ and $r$, $\alpha_i \tau^r \alpha^{-1} \in \Gamma$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The proof of this lemma is straightforward.  One needs to assume that $\Gamma$ has no three-torsion as otherwise it is possible that $\alpha R$ is itself not a potential fundamental domain.  Indeed $\alpha \tau \alpha^{-1}$ has order three and fixes a point in the interior of $\alpha R$ (namely $\alpha \rho$).
+\end{proof}
+
+\begin{thm}
+\label{thm:fd} If $\Gamma$ is a finite index subgroup of
+$\PSL_2(\Z)$ without any three-torsion, then there exists a
+fundamental domain $\F$ for the action of $\Gamma $ on $\H^*$ of
+the form
+$$
+\F = \alpha_1 R \cup \dots \cup \alpha_n R.
+$$
+In particular, there exists a fundamental domain all of whose
+vertices are cusps and whose boundary is a union of unimodular
+paths.
+\end{thm}
+
+\begin{proof}
+Since $\Gamma$ has no three-torsion, $R$ is a potential fundamental domain for $\Gamma$. Furthermore, since $\Gamma$ has finite index in $G$, there exists some {\it maximal} potential domain for $\Gamma$ of the form $\F := \alpha_1 R \cup \dots \cup \alpha_n R$.
+
+Consider any triangle $\alpha R$ which abuts the region $\F$.
+Since $\F$ is maximal, $\F \cup \alpha R$ is not a potential fundamental
+domain.  Thus, by part (2) of Lemma \ref{lemma:extend}, every
+point of $\alpha R$ is $\Gamma$-equivalent to some point in $\F$.
+In particular, there is some open neighborhood $U \subseteq \H$ of
+$\F \cap \H$ such that each point of $U$ is $\Gamma$-equivalent to
+some point in $\F$.
+
+Let $Z = \bigcup_{\gamma \in \Gamma} \gamma \F \cap \H$.  This is a closed set as any union of $\Gamma$-translates of $R$ is closed.  Moreover, this is also an open set as  $Z = \bigcup_{\gamma \in \Gamma} \gamma U$.  Since $\H$ is connected, we have $Z = \H$.  Hence, $\bigcup_{\gamma \in \Gamma} \gamma \F = \H^*$, and $\F$ is a fundamental domain for $\Gamma$.
+\end{proof}
+
+\begin{remark}
+\label{rmk:fd}
+The proof of Theorem \ref{thm:fd} shows that any maximal potential
+fundamental domain for $\Gamma$ of the form $\alpha_1 R \cup \dots
+\cup \alpha_n R$ is actually a fundamental domain.  Using Lemma
+\ref{lemma:extend}, one can explicitly form such a fundamental
+domain. We illustrate this for $\Gamma := \im(\Gamma_0(5) \maps
+\PSL_2(\Z))$ (which has no three-torsion since $5$ is a prime
+congruent to 2 mod 3.)
+
+Starting with $R$, note that the two triangles abutting $R$ to the
+left and right are $\Gamma$-equivalent to $R$ since $\left(
+\begin{smallmatrix} 1 & 1
+\\ 0 & 1 \end{smallmatrix} \right) \in \Gamma_0(5)$.  The triangle
+directly below $R$ equals $\alpha R$ with $\alpha =
+\psmallmat{1}{0}{1}{1}$.  One verifies that $\tau^r \alpha^{-1}
+\notin \Gamma_0(5)$ for $r=0,1,2$ and, thus, by Lemma
+\ref{lemma:extend}, $R \cup \alpha R$ is a potential fundamental
+domain.
+
+The two triangles directly below $R \cup \alpha R$
+are given by $\beta R$ and $\delta R$ where $\beta =
+\psmallmat{1}{0}{2}{1}$ and $\delta = \psmallmat{1}{1}{1}{2}$. One
+checks that $\alpha \tau \beta^{-1}$ and $\alpha \tau^2
+\gamma^{-1}$ are both in $\Gamma_0(5)$.  Hence, $R \cup \alpha R$
+is a maximal potential fundamental domain, and thus a fundamental
+domain for $\Gamma$.
+\end{remark}
+
+\subsection{Solving the Manin relations}
+\label{sec:solvemanin}
+
+In this section, we use the explicit description of a fundamental domain for the action of $\Gamma$ on $\H^*$ given in Theorem \ref{thm:fd} to completely solve the Manin relations for $\Gamma$ a finite index subgroup of $\PSL_2(\Z)$ with no three-torsion.
+
+Let $\F = \alpha_1 R \cup \dots \cup \alpha_n R$ be a fundamental domain for $\Gamma$.  Assume (for convenience) that $\Gamma$ contains the element $\psmallmat{1}{1}{0}{1}$, and fix $\F$ to be a fundamental domain with its left (resp.\ right) boundary equal to the path connecting $\infty$ to $-1$ (resp.\ to $0$).
+
+Let $\E$ be the set of all oriented unimodular paths passing through the interior of $\F$ together with all the oriented unimodular paths contained in $\partial \F$ where $\partial \F$ is orientated clockwise.  Thus, each interior path is counted twice (once for each orientation) and each boundary edge is counted only once.
+
+\begin{lemma}
+\label{lemma:gen} Any oriented unimodular path is $\Gamma$-equivalent to a unique element of $\E$.
+\end{lemma}
+
+\begin{proof}
+This lemma follows from the fact that $\F$ is a fundamental domain for the action of $\Gamma$.
+\end{proof}
+
+From section \ref{sec:manin}, we have an exact sequence
+$$
+0 \maps I \maps \Z[G] \maps \Delta_0 \maps 0.
+$$
+of left $\Z[\Gamma]$-modules.  If we set $J$ (resp.\ $\U$) to be the image of $I$ (resp.\ $\Z[G]$) in $Z_1$ under $[\cdot]$, we then have
+$$
+0 \maps J \maps \U \maps \Delta_0 \maps 0.
+$$
+Thus, $\Delta_0$ is given by $\U$ modulo the relations that the three sides of a triangle sum to zero and that reversing the orientation of a path introduces a minus sign.  We now give a simple presentation of $\Delta_0$ as a left $\Z[\Gamma]$-module taking advantage of its more geometric
+description as $\U /J $.
+
+By Lemma \ref{lemma:gen}, the elements of $\E$ form a basis of $\U$  as a $\Z[\Gamma]$-module.
+Denote by $\partial \E$ the set of paths in $\E$ that are
+contained in $\partial \F$. We first claim that the elements of
+$\partial \E$ generate $\U/J$ over $\Z[\Gamma]$.  Indeed, if $v
+\in \E - \partial \E$ is oriented from right to left (resp.\ left
+to right), then $v$ is equivalent mod $J$ to the sum of the paths
+in $\partial \E$ sitting below $v$ (resp.\ above $v$) since these paths
+taken together with $v$ form a loop.
+
+The elements in $\partial \E$ modulo $J$ are not independent over $\Z[\Gamma]$.  Indeed, one obvious relation that they satisfy is
+\begin{equation*}
+ \sum_{e \in \partial \E} e \in J.
+\end{equation*}
+
+
+Also, for $u \in \U$, let $\overline{u}$ denote $u$ with its orientation reversed. Then, $e + \overline{e} \in J$ for any $e \in \partial \E$.  Moreover, by Lemma \ref{lemma:gen}, $\overline{e}$ is $\Gamma$-equivalent to a unique element $e' \in \partial \E$. 
+Thus, reversing orientation induces an action on $\partial \E$ which  decomposes $\partial \E$ into orbits of size one and two.  Note that $\{\infty,0\}$ and $\{-1,\infty\}$ form an orbit of size
+two since
+$$
+\overline{ \{\infty,0\} } = \{0,\infty\} = \psmallmat{1}{1}{0}{1} \{-1,\infty\}.
+$$
+We set $e_\infty = \{\infty,0\}$ and $e^*_\infty = \{-1,\infty\}$.
+Similarly, we enumerate the other two element orbits, and write
+$e_i$ and $e^*_i$ for the elements of the $i$-th orbit of size
+two.  For the one element orbits, we label them by $e'_1$,$\dots$,$e'_s$.
+
+In this notation, $\overline{e_i} = \gamma_i e^*_i$ for some $\gamma_i
+\in \Gamma$, and hence $$e^*_i + \gamma_i^{-1} e_i \in J.$$  Also,
+$\overline{e'_i} = \gamma'_i e'_i$ for some $\gamma'_i \in \Gamma$, and hence
+$$
+(\gamma'_i + 1) e_i \in J.
+$$
+Note that $\gamma'_i$ has order two since reversing orientation is an involution.  Also, one can check that $s$, the number of single element orbits, is equal to the number of conjugacy classes of elements of order two in $\Gamma$; in particular, if $\Gamma$ has no two-torsion, then
+these additional relations do not appear.
+
+The relations $e^*_i + \gamma_i^{-1} e_i \in J$ imply that $\U
+/ J$ is generated by $e_1, \dots, e_t, e_\infty$, $e'_1, \dots,
+e'_s$ over $\Z[\Gamma]$.  Moreover, the relation $\partial \F = 0$ written in terms of these generators takes the form
+$$
+\sum_{e \in \partial \E} e = \left(1 -
+\psmallmat{1}{-1}{0}{1}\right) e_\infty + \sum_{i=1}^t
+(1-\gamma_i^{-1}) e_i + \sum_{i=1}^s e'_i \in J.
+$$
+
+For $i$ between $1$ and $t$, let $D_i = \partial(e_i)$ and let $D_\infty = \partial(e_\infty)$. Also, set $D'_i = -\partial(e'_i)$ for $i$ between $1$ and $s$.  We then have the following theorem.
+
+\begin{thm}
+\label{thm:gen} Let $\Gamma$ be a finite index subgroup of
+$\PSL_2(\Z)$ without any three-torsion.  Then $\Delta_0$ is
+generated as a $\Z[\Gamma]$-module by $D_1,\dots,D_t,D_\infty,
+D'_1,\dots,D'_s$. Moreover, the relations satisfied by these
+divisors are generated by
+$$
+\sum_{i=1}^t (\gamma_i^{-1}-1) D_i + \sum_{i=1}^s D'_i= \left
+(\psmallmat{1}{-1}{0}{1} - 1\right) D_\infty
+$$
+and
+$$
+(1 + \gamma_i') D'_i = 0
+$$
+for $i$ between $1$ and $s$.
+\end{thm}
+
+\begin{proof}
+We have already verified that these divisors generate and satisfy
+these relations since we verified the analogous statements in
+$\U / J$.  Moreover, working backwards through the preceding
+arguments, one can see that these relations are equivalent to the
+relations occurring in $J$.
+\end{proof}
+
+This complete description of $\Delta_0$ as a $\Z[\Gamma]$-module yields the following corollary.  In what follows, let $\Delta = \psmallmat{1}{1}{0}{1} - 1$ denote the difference operator.
+
+\begin{cor}
+\label{cor:ms} Let $\Gamma$ be a finite index subgroup of
+$\PSL_2(\Z)$ without three-torsion, and let $V$ be an arbitrary
+right $\Gamma$-module.  Let $v_1,\dots,v_t, v_\infty, v'_1,\dots, v'_s$ be elements of $ V$ such that
+$$
+v_\infty\big| \Delta = \sum_{i=1}^t v_i\big| (\gamma_i-1) +
+\sum_{i=1}^s v'_i
+$$
+and, for $i$ between $1$ and $s$,
+$$
+v'_i\big| (1+ \gamma'_i) = 0.
+$$
+Then there is a unique modular symbol $\varphi \in
+\MS{V}$ such that for each $i$
+$$
+\varphi(D_i) = v_i \text{~and~}\varphi(D'_i) = v'_i.
+$$
+Conversely, every modular symbol $\varphi \in \MS{V}$ arises in
+this manner.
+\end{cor}
+
+We recall that if $\Gamma$ has no elements of order two, then $s=0$.
+\subsection{The case of three-torsion}
+
+In constructing the fundamental domain $\F$, we needed to assume
+that $\Gamma$ has no elements of order three.  We now sketch what
+occurs when such torsion elements are present in $\Gamma
+\subsetneq G$.
+
+Recall that $R$ is the ideal triangle with vertices $0$, $1$ and
+$\infty$.  The key fact that we used when building $\F$ out of
+translates of $R$ was that for $\alpha \in \PSL_2(\Z)$, we have
+that $\alpha R$ is a potential fundamental domain if and only if
+$\alpha \tau \alpha^{-1} \notin \Gamma$.   Now when the three-torsion element $\alpha \tau \alpha^{-1}$ is present in $\Gamma$,
+we will not want to include all of $\alpha R$, but instead only
+``one-third'' of it.
+
+Indeed, recall that $R$ is the union of $T$, $\tau T$ and $\tau^2
+T$ where $T$ is the ideal triangle with vertices $0$, $1$ and
+$\rho$.  Assume we have a potential fundamental domain of the form
+$\alpha_1 R \cup \dots \cup \alpha_n R$ and that we are
+considering whether or not to extend this domain past the edge $e$
+to the triangle $\alpha R$.  If $\alpha \tau \alpha^{-1} \notin
+\Gamma$, we extend our fundamental domain by including all of
+$\alpha R$.  However, if $\alpha \tau \alpha^{-1} \in \Gamma$,
+we extend our potential fundamental domain by only including the
+unique triangle of $\alpha T$, $\alpha \tau T$ and $\alpha \tau^2 T$
+that contains the edge $e$. Continuing in this manner would lead
+to a domain
+$$
+\F = \alpha_1 R \cup \dots \cup \alpha_n R \cup \beta_1 T \cup
+\dots \cup \beta_r T
+$$
+that is a maximal potential fundamental domain of this form.  As
+in Theorem \ref{thm:fd}, we have that such a domain is necessarily
+a fundamental domain for the action of $\Gamma$.  These
+considerations yield the following theorem.
+
+\begin{thm}
+\label{thm:fd3}
+Let $\Gamma$ any finite index subgroup of $\PSL_2(\Z)$.  Then
+there exists a fundamental domain $\F$ for the action of $\Gamma$
+on $\H^*$ of the form
+$$
+\F = \alpha_1 R \cup \dots \alpha_n R \cup \beta_1 T \cup \dots \beta_r T
+$$
+for $\alpha_i,\beta_i \in \PSL_2(\Z)$.
+\end{thm}
+
+One can check that the triangles $\beta_i T$ are in one-to-one
+correspondence with pairs of conjugacy classes of three-torsion
+elements; two conjugacy classes are paired if the inverse of any
+element of one class appears in the other class.
+
+
+We now consider how this change in the shape of the fundamental
+domain $\F$ affects our solution of the Manin relations. We first
+need to make an alteration to the definition of $\partial \E$;
+namely, $\partial \E$ should not only contain all elements of $\E$
+that are contained in $\partial \F$, but also the unique edge of
+each triangle $\beta_i T$ that is not contained in $\partial
+\F$. These addition edges should be oriented from right to left.
+
+If $e''_i$ is the exceptional edge that corresponds to $\beta_i T$, then the three-term relation involving $e''_i$ is simply that the sum of the three edges of $\beta_i R$ equals 0.  The matrix $\gamma''_i = \beta_i
+\tau \beta_i^{-1}$ fixes a point in the interior of $\beta_i R$, and thus permutes the edges of this triangle.  This three-term relation thus becomes
+$$
+e''_i + \gamma''_i e''_i + (\gamma''_i)^2 e''_i = (1 + \gamma''_i  + (\gamma''_i)^2) e''_i
+\in J.
+$$
+Set $D''_i = -\partial(e''_i)$ for $i$ between $1$ and $r$.
+
+Following the same arguments as in section \ref{sec:manin} yields
+the following two results.
+
+\begin{thm}
+\label{thm:3tor}
+Let $\Gamma \subsetneq \PSL_2(\Z)$ be a proper finite index subgroup.
+Then $\Delta_0$ is generated as a $\Z[\Gamma]$-module by $D_1$,$\dots$,$D_t$,$D_\infty$,$D'_1$,$\dots$,$D'_s$,$D''_1$,$\dots$,$D''_r$.  Moreover, the relations satisfied by these
+divisors are generated by
+$$
+\sum_{i=1}^t (\gamma_i^{-1}-1) D_i + \sum_{i=1}^s D'_i + \sum_{i=1}^r D''_i
+= \left (\psmallmat{1}{-1}{0}{1} - 1\right) D_\infty,
+$$
+for $i$ between $1$ and $s$,
+$$
+(1 + \gamma_i') D'_i = 0,
+$$
+and, for $i$ between $1$ and $r$,
+$$
+(1 + \gamma_i'' + (\gamma''_i)^2) D''_i = 0.
+$$
+\end{thm}
+
+\begin{proof}
+We point out that the condition that $\Gamma \neq \PSL_2(\Z)$ is needed
+to ensure that the divisors $D'_i$ and $D''_j$ are all distinct.
+Indeed, if two such divisors were equal, this would imply that
+$\Gamma$ contains $\alpha \sigma \alpha^{-1}$ and $\alpha \tau
+\alpha^{-1}$ for some $\alpha \in G$.  But then $\Gamma$ is
+conjugate to $\PSL_2(\Z)$ and thus equal to $\PSL_2(\Z)$.
+\end{proof}
+
+\begin{cor}
+\label{cor:msgen} 
+Let $\Gamma \subsetneq \PSL_2(\Z)$ be a proper finite index subgroup, and let $V$ be an arbitrary right $\Gamma$-module. Let $v_1, \dots, v_t, v_\infty, v'_1, \dots, v'_s, v''_1, \dots, v''_r \in V$ be such that
+$$
+v_\infty\big| \Delta = \sum_{i=1}^t v_i\big| (\gamma_i-1) +
+\sum_{i=1}^s v'_i + \sum_{i=1}^r v''_i,
+$$
+for $i$ between $1$ and $s$
+$$
+v'_i\big| (1+ \gamma'_i) = 0
+$$
+and, for $i$ between $1$ and $r$,
+$$
+v''_i\big| (1+ \gamma'_i+(\gamma''_i)^{2}) = 0.
+$$
+Then there is a unique modular symbols $\varphi \in \MS{V}$ such
+that 
+$$
+\varphi(D_i) = v_i, ~ \varphi(D'_i) = m'_i \text{~and~}
+\varphi(D''_i) = m''_i.
+$$
+Conversely, every modular symbol
+$\varphi \in \MS{V}$ arises in this manner.
+\end{cor}
+
+
+\subsection{Computing with modular symbols in practice}
+
+The results of the previous sections can used in practice to compute efficiently with $V$-valued modular symbols for $V$ some right $\Gamma$-module as long as one can efficiently compute the action of $\Gamma$ on $V$.  Namely, Corollary \ref{cor:ms} tells us that a modular symbol $\varphi \in \MS{V}$ is determined by its value on a finite set of divisors.  We now describe how to compute the value of $\varphi$ on any degree zero divisor from the data of the values of $\varphi$ on a generating set of divisors.
+
+First note that since $\Delta_0$ is generated by divisors of the
+form $\left\{\frac{a}{c}\right\} - \left\{\frac{b}{d}\right\}$, it
+suffices to work with these two-term divisors.  Then Manin's
+continued fraction algorithm (see \cite{Manin}) allows us to write
+such a divisor as a sum of divisors arising from unimodular paths.
+Therefore, it suffices to be able to compute $\varphi$ on divisors
+arising from unimodular paths.
+
+Let $[g]$ be some unimodular path with $g \in \PSL_2(\Z)$.  This
+path is $\Gamma$-equivalent to some path in $\E$ by Lemma
+\ref{lemma:gen}. Explicitly, if $\E = \{[g_1], \dots, [g_r]\}$
+with $g_i \in \PSL_2(\Z)$, then the $g_i$ form a complete set of
+right coset representatives for $\Gamma / G$.  Thus, for some $i$
+(which is easily computed), we have that $g = \gamma g_i$ with
+$\gamma \in \Gamma$. We then have 
+$$
+\varphi(d(g)) = \varphi(d(\gamma g_i)) = \varphi(d(g_i))\big| \gamma^{-1}
+$$ 
+and, hence, to compute $\varphi$ on any divisor it suffices to be able to compute the value of $\varphi$ on the divisors arising from elements of $\E$.  
+
+Finally, the constructions that lead up to Theorem \ref{thm:gen} 
+give an explicit way of writing any $e \in \E$ as a linear
+combination of our generators over $\Z[\Gamma]$.  Thus, it suffices to compute the value of $\varphi$ on these generators as desired.
+
+\section{Distributions}
+\label{sec:dist}
+
+Overconvergent modular symbols are modular symbols which take values in certain $p$-adic spaces of distributions.  In this section, we review the basic theory of these distribution spaces.
+
+\subsection{Definitions}
+
+For each $r \in |\Cp^\times|$, let
+$$
+B[\Zp,r] = \{ z \in \Cp ~|~ \text{there~exists~some~} a \in \Zp \text{~with~}
+|z-a| \leq r \}.
+$$
+Then $B[\Zp,r]$ is the $\Cp$-points of a $\Qp$-affinoid variety.  For example, if $r \geq 1$ then $B[\Zp,r]$ is the closed disc in $\Cp$ of radius $r$ around 0. If $r = \frac{1}{p}$ then $B[\Zp,r]$ is the disjoint union of the $p$ discs of radius $\frac{1}{p}$ around the points $0$, $1$, $\dots$ , $p-1$.
+
+Let $\Arigv{r}$ denote the $\Qp$-Banach algebra of $\Qp$-affinoid functions on $B[\Zp,r]$.  For example, if $r\geq 1$
+$$
+\Arigv{r} = \left\{  f(z) = \sum_{n=0}^\infty a_n z^n \in \Qp[[z]]
+\text{~such~that~} \{ |a_n| \cdot r^n \} \maps 0 \right\}.
+$$
+The norm on $\Arigv{r}$ is given by the supremum norm.  That is, if $f \in \Arigv{r}$ then
+$$
+||f||_r = \sup_{z \in B[\Zp,r]} |f(z)|_p.
+$$
+For $r_1>r_2$, there is a natural restriction map $\Arigv{r_1} \maps \Arigv{r_2}$
+that is injective, completely continuous, and has dense image.  We define
+$$
+\Ala = \varinjlim_{s>0} \Arigv{s} \text{~and~} \Aocv{r} =
+\varinjlim_{s>r} \Arigv{s}.
+$$
+(Note that these direct limits are taken over sets with no smallest element and therefore are not vacuous.)  
+
+We endow each of these spaces with the inductive limit topology.  Then $\Ala$ is naturally identified with the space of locally analytic $\Qp$-valued
+functions on $\Zp$ while $\Aocv{r}$ is identified with the space of $\Qp$-overconvergent functions on $B[\Zp,r]$.   Note that there are natural continuous inclusions
+$$
+\Aocv{r} \inj \Arigv{r} \inj \Ala.
+$$
+Moreover, the image of each of these maps is dense in its target space.
+
+The $p$-adic distributions modules studied in this paper are dual to these topological vector spaces. Namely, set $\Dla$, $\Drigv{r}$ and $\Dkocv{r}$ to be the space of continuous $\Qp$-linear functionals on $\Ala$,
+$\Arigv{r}$,
+and $\Aocv{r}$ respectively, each endowed with the strong topology.
+Equivalently,
+$$
+\Dla = \varprojlim_{s>0} \Drigv{s} \text{~and~} \Dkocv{r} =
+\varprojlim_{s>r} \Drigv{s},
+$$
+each endowed with the projective limit topology.
+
+Note that $\Drigv{r}$ is a Banach space under the norm
+$$
+||\mu||_{r} = \sup_{\genfrac{}{}{0pt}{}{f \in \Arigv{r}}{f \neq 0}}
+\frac{|\mu(f)|}{||f||_{r}}.
+$$
+for $\mu \in \Drigv{r}$.
+On the other hand, $\Dla$  (resp. $\Dkocv{r}$)
+has its topology defined by the family of norms $\{ || \cdot ||_s\}$
+for $s \in |\Cp^\times|$ with $s>0$ (resp. $s>r$).
+Dualizing yields continuous linear injective maps
+$$
+\Dla \inj \Drigv{r} \inj \Dkocv{r}.
+$$
+To ease notation, we write $\Drig$ for $\Drigv{1}$ and $\Doc$ for $\Docv{1}$.
+
+\subsection{An explicit description of $\Drig$ and $\Doc$}
+
+In what follows, we will primarily be interested in the distribution modules
+$\Dla$, $\Drig$ and $\Doc$. We are obliged to study $\Dla$ as this is the natural space where $p$-adic $L$-functions live. We also study the larger spaces of distribution $\Drig$ and $\Doc$ as one has a bit more freedom in these spaces to perform certain constructions. In this subsection, we give a concrete description of the latter two spaces in terms of moments of distributions.
+
+To this end, note that the sequence of functions $\{z^j\}_{j=0}^\infty$ is dense in $\Arigv{r}$ for $r \geq 1$.  Thus, any element of $\Doc$ is determined by its values on powers of $z$ (i.e.\ by its moments).  We therefore have an injective map
+$$
+\Doc \stackrel{M}{\lra} \prod_{j=0}^\infty \Qp
+$$
+which sends $\mu$ to the sequence
+$\left\{ \mu(z^j) \right\}_{j =0}^\infty$.  
+
+The following proposition establishes that the only obstruction to constructing a distribution by specifying its moments is a growth condition on the sequence of moments.
+
+\begin{prop}
+\label{prop:moments}~
+\begin{enumerate}
+\item The image of $M$ equals
+$$
+\left\{ \left\{c_j\right\} \in \prod_{j=0}^\infty \Qp \text{~where~}
+|c_j| \text{~is~} \OO(r^j) \text{~as~} j \maps \infty
+\text{~for~each~} r>1 \right\}.
+$$
+\item The map $M$ restricts to give an isomorphism of Banach spaces between $\Drig$ and the space of bounded sequences in $\Qp$ (under the sup norm).
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+For the first part, let $\mu \in \Doc$ and fix $r>1$.  Then
+$$
+|\mu(z^j)| \leq ||z^j||_r \cdot ||\mu||_r = r^j \cdot ||\mu||_r,
+$$
+and hence $|\mu(z^j)|$ is $\OO(r^j)$ as $j \maps \infty$.
+
+Conversely, let $\left\{c_j\right\} $ be some $\Qp$-sequence that is $\OO(r^j)$ for every $r>1$.  Let $f$ be in $\Aoc$ with $f = \sum_j a_j z^j$, and define a distribution $\mu \in \Doc$ by $\mu(f) = \sum_j a_j c_j$.  This sum converges as $f \in \Arigv{r}$ for some $r>1$, and hence $\{ |a_j| \cdot r^j \} \maps 0$ as $j \maps \infty$. Since $M(\mu) = \left\{c_j\right\} $, the first claim is proven.
+
+The second claim follow similarly.  Note that
+$$
+||\mu||_1 = \sup_{\genfrac{}{}{0pt}{}{f \in \Arigv{1}}{f \neq 0}}
+\frac{|\mu(f)|}{||f||_1}
+          = \sup_{j \geq 0} \frac{|\mu(z^j)|}{||z^j||_1} = \sup_{j \geq 0}
+|c_j| = || \left\{c_j\right\} ||.
+$$
+\end{proof}
+
+\subsection{The action of $\sigop$}
+
+Let
+$$
+\sigop = \left\{  \mat \in M_2(\Zp) \text{~such~that~}
+p \nmid a, p~|~c \text{~and~} ad-bc \neq 0 \right\}
+$$
+be the $p$-adic version of $\sop$.  For each non-negative integer $k$, we define a weight $k$ action of $\sigop$ on $\Arigv{r}$ by
+$$
+(\gamma \cdot_k f)(z) = (a+cz)^k \cdot f \left( \frac{b+dz}{a+cz} \right)
+$$
+where $\gamma = \smallmat \in \sigop$ and $f \in \Arigv{r}$.
+Then $\sigop$ acts on $\Drigv{r}$ on the right by
+$$
+(\mu \big|_k \gamma)(f) = \mu(\gamma \cdot_k f)
+$$
+where $\mu \in \Drigv{r}$.
+
+These two actions induce actions on $\Ala$, $\Aocv{r}$, $\Dla$, and $\Dkocv{r}$.  To emphasis the role of $k$ in this action, we sometimes write $k$ in the subscript, i.e.\ $\Akla$, $\Dkla$, etc.
+
+\subsection{Finite-dimensional quotients}
+\label{sec:fdq}
+
+For an integer $k \geq 0$, consider
+$$
+V_k = \Sym^k(\Qp^2),
+$$
+the space of homogeneous polynomials of degree $k$ in $X$ and $Y$ with coefficients in $\Qp$. We endow the space $V_k$ with the structure of a right $\GL_2(\Qp)$-module by
+$$
+(P \big| \gamma)(X,Y) = P\left( (X,Y) \cdot \gamma^*\right) = P(dX-cY,-bX+aY)
+$$
+where $\gamma = \smallmat$ and $P \in V_{k}$.
+
+We note that by Eichler-Shimura theory, $V_k$-valued modular symbols are intimately related to classical modular forms.
+
+For $D_k = \Dkla$, $\Dkrig$ or $\Dkoc$, there is an $\sigop$-equivariant map
+\begin{align*}
+\rho_k :D_k &\maps V_k  \\
+\mu &\mapsto \int (Y-zX)^k ~d\mu(z)
+\end{align*}
+where the integration takes place coefficient by coefficient. 
+This map induces a map from $D_k$-valued modular symbols to $V_k$-valued modular symbols.  A careful study of this specialization map will be made in section \ref{sec:OMS}.
+
+
+
+\section{Forming modular symbols}
+
+Let $\Gamma$ denote some congruence subgroup of level $N$, and set $\Gamma_0 = \Gamma \cap \Gamma_0(p)$ with $p$ some prime not dividing $N$.  Let $V$ denote a right $\Z[\Gamma_0]$-module.  By Corollary \ref{cor:msgen}, to write down a $V$-valued modular symbol for $\Gamma_0$, we need to be able to solve the equations of the form
+$$
+v\big| (1+\sigma) = 0,~
+v\big| (1+\tau+\tau^2) = 0,\text{~and~}
+v\big| \Delta = w
+$$
+for $v,w \in V$.  Recall that $\Delta = \psmallmat{1}{1}{0}{1} -1$
+while $\sigma$ and $\tau$ have orders two and three respectively.
+
+The first two equations are easy to explicitly solve in any $\Gamma_0$-module $V$ (where $2$ and $3$ act invertibly) while the last equation (the difference equation) is more subtle and its solution will depend heavily upon the module $V$.  For $V = \Dkoc$, we give an explicit solution to this equation in section \ref{sec:diffeqn}.
+
+\subsection{Torsion equations}
+
+Assume $2$ acts invertibly on $V$.  Then
+\begin{align*}
+V &\stackrel{\sim}{\maps} V^{\sigma = 1} \oplus V^{\sigma = -1} \\
+v &\mapsto \frac{1}{2} \left( v \big|(1+\sigma),v\big|(1-\sigma)\right)
+\end{align*}
+is an isomorphism since $\sigma$ acts as an involution on $V$.  
+
+Similarly, if $3$ acts invertibly on $V$,  
+\begin{align*}
+V &\stackrel{\sim}{\maps} V^{\tau = 1} \oplus V^{1+ \tau + \tau^2 = 0} \\
+v &\mapsto \frac{1}{3} \left(v\big|(1+\tau+\tau^2),v\big|(2-\tau-\tau^2)\right)
+\end{align*}
+is an isomorphism.  These observations establish the following proposition.
+
+\begin{prop} ~
+\begin{enumerate}
+\item If $2$ acts invertibly on $V$, then
+$$
+\{ v \in V ~:~ v \big| (1+\sigma) =0 \} = V \big| (1-\sigma).
+$$
+\item If $3$ acts invertibly on $V$, then
+$$
+\{ v \in V ~:~ v \big| (1+\tau+\tau^2)=0 \} = V \big| (2-\tau-\tau^2).
+$$
+\end{enumerate}
+\end{prop}
+
+
+\subsection{The difference equation}
+\label{sec:diffeqn}
+
+We begin with the case of $V = V_k$.
+
+\begin{prop}
+\label{prop:Lkkerdelta}
+Consider $\Delta:V_k \maps V_k$.  We have that
+\begin{enumerate}
+\item $\ker(\Delta)$ equals $\Qp \cdot X^k$;
+\item $\im(\Delta)$  is generated by the monomials $X^k$, $X^{k-1}Y$, $\dots $, $XY^{k-1}$.
+\end{enumerate}
+Thus, for each $P \in V_k$ whose coefficient of $Y^k$ is zero, there exists $Q \in V_k$ such that
+$$
+Q \big| \Delta = P
+$$
+Moreover, $Q$ is unique up to the addition of a constant multiple of $X^k$.
+\end{prop}
+
+\begin{proof}
+Let $Q$ be in $V_k$ with $Q \big| \Delta = 0$.  Then $Q(X,Y-X)=Q(X,Y)$, and thus $Q(1,Y-1)=Q(1,Y)$.  Therefore, as a polynomial in $Y$, $Q(1,Y)$ is a constant; this implies that $Q(X,Y) = c X^k$ for some $c \in \Qp$ as claimed.
+
+For the second part, a simple computation shows that the coefficient of $Y^k$ of $Q \big| \Delta$ always vanishes, and thus, $\im(\Delta)$ is contained in the span of the monomials $X^i Y^j$ with $j \neq k$.  As $\ker(\Delta)$ is one-dimensional, we have that $\im(\Delta)$ is $k$-dimensional, and this inclusion is an equality.
+\end{proof}
+
+We next consider the case of $V = \Dkoc$.
+
+\begin{lemma}
+\label{lem:inj}
+The map $\Delta : \Dkoc \maps \Dkoc$ is injective.
+\end{lemma}
+
+\begin{proof}
+Let $\mu \in \ker(\Delta)$ be a non-zero distribution,
+and let $n$ be the smallest non-negative integer such that
+$\mu(z^n) \neq 0$.   Since $\mu\big| \Delta = 0$, we have
+$$
+\mu(z^{n+1}) = \mu((z-1)^{n+1}),
+$$
+and thus
+$$
+ \mu(z^{n+1}) = \mu(z^{n+1}) + (-1)^{n+1} (n+1) \mu(z^n)
+$$
+since $\mu(z^j) = 0$ if $j<n$.
+Hence, $\mu(z^n) = 0$, and this contradiction implies that $\mu$ is identically zero.
+\end{proof}
+
+Note that
+$$
+\left( \mu\big| \Delta \right)({\bf 1}) = \left( \mu\big|
+\psmallmat{1}{1}{0}{1} \right)({\bf 1}) - \mu({\bf 1}) = 0
+$$
+where ${\bf 1}$ is the constant function with value $1$. Thus, $\im(\Delta)$ is contained in the set of distributions with total measure zero. We will see that this inclusion is in fact an equality.  
+
+To this end, we begin by solving the difference equation
+$$
+\mu \big| \Delta = \nu_j
+$$
+where $\nu_j \in \Dkrig$ is the simple distribution defined by
+$$
+\nu_j(z^r) = \begin{cases} 1 & \text{if~} r=j \\ 0 & \text{otherwise}. \end{cases}
+$$
+In the following lemma, we write down explicit distributions that solve this equation; interestingly, the moments of these distributions are given by Bernoulli numbers.
+
+\begin{lemma}
+\label{lemma:eta}
+Let $\eta_j \in \Dkrig$ be defined by
+$$
+\eta_j(z^r)  =  \begin{cases} \binom{r}{j} b_{r-j} & \text{if~} r \geq j \\ 0 & \text{otherwise}, \end{cases}
+$$
+where $b_n$ is the $n$-th Bernoulli number.
+Then,
+$$
+\eta_j \big| \Delta = (j+1) \cdot \nu_{j+1}.
+$$
+\end{lemma}
+
+\begin{proof}
+First note that by the von Staudt-Clausen theorem, $p b_n \in \Zp$ for each $n$.
+Thus, $\eta_j$ is in $\Dkrig$ by Proposition \ref{prop:moments}.
+
+For $r \geq j \geq 0$ we compute:
+\begin{align*}
+\left( \eta_j \big| \psmallmat{1}{1}{0}{1} \right)(z^r)
+=
+\eta_j( (z+1)^r) 
+=
+\sum_{i=0}^r \binom{r}{i} \eta_j(z^i) 
+=
+\sum_{i=j}^r \binom{r}{i} \binom{i}{j} b_{i-j}.
+\end{align*}
+But, for $r \geq j$, we have the following identity of Bernoulli numbers:
+$$
+\sum_{i=j}^r \binom{r}{i} \binom{i}{j} b_{i-j} =
+\begin{cases}
+\binom{r}{j} b_{r-j} + (j+1) & \text{if~} r = j+1\\
+\binom{r}{j} b_{r-j}   & \text{otherwise}. \\
+\end{cases}
+$$
+Thus
+$$
+(\eta_j\big| \Delta)(z^r) = 
+(\eta_j\big| \psmallmat{1}{1}{0}{1})(z^r) - \eta_j(z^r) =
+\begin{cases} 
+j+1 & \text{if~} r = j+1 \\ 
+0 &  \text{otherwise}
+\end{cases}
+$$
+which implies $\eta_j \big| \Delta = (j+1) \nu_{j+1}$
+as claimed.  
+\end{proof}
+
+\begin{thm}
+\label{thm:diffeqn}
+For any $\nu \in \Dkoc$ of total measure zero, there exists a
+unique $\mu \in \Dkoc$ such that
+$$
+\mu\big| \Delta = \nu.
+$$
+\end{thm}
+
+\begin{proof}
+Define a distribution $\mu$ by
+$$
+\mu = \sum_{j=1}^\infty \frac{\nu(z^j)}{j} \cdot \eta_{j-1}.
+$$
+Note that $\mu$ evaluated at any monomial makes sense as only finitely many terms are non-zero.  Further, by Proposition \ref{prop:moments}, $\mu$ extends to a distribution in $\Dkoc$ as the values $\mu(z^j)$ are $\OO(r^j)$ for all $r>1$.
+
+By Lemma \ref{lemma:eta}, 
+$$
+\mu \big| \Delta 
+= \sum_{j=1}^\infty \frac{\nu(z^j)}{j} \cdot \eta_{j-1} \big| \Delta
+= \sum_{j=1}^\infty \nu(z^j) \cdot \eta_{j} = \nu
+$$
+as claimed.  (Note that the last equality uses the fact that $\nu$ has total measure zero.)  The uniqueness of $\mu$ follows from Lemma \ref{lem:inj}.
+\end{proof}
+
+\begin{remark}
+The proof of Theorem \ref{thm:diffeqn} is completely explicit as the elements $\eta_j$ are given explicitly by Lemma \ref{lemma:eta}.  Also note that if $\nu \in \Dkrig$, it may not be true that $\mu \in \Dkrig$ because of the presence of denominators in the above formula.  It is primarily for this reason that we are forced to consider $\Dkoc$ in this paper.
+\end{remark}
+
+
+\section{Overconvergent modular symbols}
+\label{sec:OMS}
+
+Let $D_k := \Dkla$, $\Dkrig$ or $\Dkoc$; we refer to
+$\MSo{D_k}$ as a space of overconvergent modular symbols
+(endowed with the weight $k$ action).   These spaces of overconvergent modular symbols naturally map to the space of classical modular symbols.  Indeed, there is a natural $\sigop$-equivariant map (introduced in section \ref{sec:fdq}) given by
+\begin{align*}
+\rho_k :D_k &\maps V_k  \\
+\mu &\mapsto \int (Y-zX)^k ~d\mu(z)
+\end{align*}
+where the integration takes place coefficient by coefficient. This
+induces a map
+$$
+\sp : \MSo{D_k} \maps \MSo{V_k}
+$$
+which we refer to as the {\it specialization map}.  Note that $\sp$ is Hecke-equivariant as $\rho_k$ is $\sigop$-equivariant.  In the following, we study the question of lifting classical modular symbols with respect to this map.
+
+\subsection{Explicit lifts of classical symbols}
+\label{sec:lift}
+
+\begin{thm}
+\label{thm:surj1}
+The specialization map
+$$
+\sp : \MSo{\Dkoc} \maps \MSo{V_k}
+$$
+is surjective.
+\end{thm}
+
+\begin{proof}
+Throughout this proof, we will be using the notation of section \ref{sec:solvemanin}.
+
+For each $\varphi \in \MSo{V_k}$, we wish to find $\Phi \in \MSo{\Dkoc}$ such that $\sp(\Phi) = \varphi$.  To define $\Phi$, by Corollary \ref{cor:msgen}, it suffices to give the values of $\Phi$ on
+$D_1, \dots, D_t, D_\infty$, $D'_1, \dots, D'_s$,$D''_1, \dots, D''_r$
+subject to certain relations.
+
+Defining $\Phi(D_i)$ is easy for $i < \infty$; simply pick any
+$\mu_i \in \Dkoc$ such that $\spd(\mu_i) = \varphi(D_i)$.  To
+define $\Phi(D'_i)$, we need to find $\mu'_i$ such that
+$$
+\spd(\mu'_i) = \varphi(D'_i) \text{~~and~~} \mu'_i\big| (1 + \sigma)
+= 0.
+$$
+To do this, pick any $\nu'_i \in \Dkoc$ such that
+$\spd(\nu'_i) = \varphi(D'_i)$ and set 
+$$\mu'_i = \frac{1}{2} \nu'_i\big| (1 - \sigma).$$  Since $\mu'_i$ is in the image of $1 - \sigma$, it is automatically killed by $1 + \sigma$.
+Moreover, since $\varphi(D'_i)\big| \sigma = -\varphi(D'_i)$, we
+have that
+$$
+\spd(\mu'_i) = \frac{1}{2} \spd(\nu'_i\big| (1-\sigma)) =
+\frac{1}{2} (\varphi(D'_i) - \varphi(D'_i)\big| \sigma) =
+\varphi(D'_i).
+$$
+We define $\Phi(D''_i)$ similarly.
+
+Then set 
+\begin{equation*}
+\nu_\infty = \sum_{i=1}^t \mu_i \big| (\gamma_i-1) + \sum_{i=1}^s \mu'_i + \sum_{i=1}^r \mu''_i.
+\end{equation*}
+All that is left is to find $\mu_\infty \in \Dkoc$ such that $\mu_\infty$ lifts $\varphi(D_\infty)$ and $\mu_\infty \big| \Delta = \nu_\infty$.  To this end, first note that $\nu_\infty$ has total measure zero.  Indeed
+\begin{align*}
+\spd(\nu_\infty) 
+&= \sum_{i=1}^t \spd(\mu_i) \big| (\gamma_i-1) + \sum_{i=1}^s \spd(\mu'_i) + \sum_{i=1}^r \spd(\mu''_i) \\
+&= \sum_{i=1}^t \varphi(D_i) \big| (\gamma_i-1) + \sum_{i=1}^s \varphi(D'_i) + \sum_{i=1}^r \varphi(D''_i) \\
+&= \varphi(D_\infty) \big| \Delta
+\end{align*}
+as $\varphi$ is a modular symbol.  Hence, $\spd(\nu_\infty) \in \im(\Delta)$.  By Proposition \ref{prop:Lkkerdelta}, the coefficient of $Y^k$ of $\spd(\nu_\infty)$ vanishes, and thus $\nu_\infty$ has total measure zero.
+
+Theorem \ref{thm:diffeqn} then yields a unique $\mu_\infty \in \Dkoc$ satisfying $\mu_\infty \big| \Delta = \nu_\infty$. However, $\mu_\infty$ need not lift $\varphi(D_\infty)$.  Indeed, from this construction we only know that
+$$
+\rho_k(\mu_\infty) \big| \Delta = \varphi(D_\infty) \big| \Delta.
+$$
+Since $\ker(\Delta) = \Qp X^k$ (see Proposition \ref{prop:Lkkerdelta}), we have that $\spd(\mu_\infty) - \varphi(D_\infty) = c X^k$ for some $c \in \Qp$.  Thus, the $k$-th moment of $\mu_\infty$ is possibly taking on the wrong value.
+
+To remedy this problem, one can make use of the great flexibility in our choice of the $\mu_i$.  By modifying these distributions, one can change the value of $\mu_\infty(z^k)$ to any value in $\Qp$, and still have that $\mu_\infty \big| \Delta = \nu_\infty$. In particular, one can force $\spd(\mu_\infty)$ to equal $\varphi(D_\infty)$.  We leave the details to the interested reader.
+
+
+Then, by Corollary \ref{cor:msgen}, there is a unique modular symbol
+$\Phi$ defined by
+$$
+{\Phi}(D_\infty) = \mu_\infty,~ {\Phi}(D_i) = \mu_i,~
+{\Phi}(D'_i) = \mu'_i \text{~and~} {\Phi}(D''_i) =
+\mu''_i,
+$$
+which by construction lifts $\varphi$.
+\end{proof}
+
+\vspace{0.2cm}
+
+\begin{remark}~
+\begin{enumerate}
+\item
+The proof of this theorem is completely explicit in that the values of $\Phi$ on a generating set of divisors is described explicitly in terms of the corresponding values of $\varphi$.
+
+\item
+In practice, if one is lifting a non-Eisenstein eigensymbol, one does not need to go through the extra process, mentioned at the end of the above proof, to force the value at $D_\infty$ to work out correctly.  Indeed, the first half of the above proof produces an overconvergent modular symbol $\Psi$ such that if $\psi:=\sp(\Psi) - \varphi$, then
+$\psi(D_i)=\psi(D'_i)=\psi(D''_i)=0$ for $i < \infty$ and $\psi(D_\infty) = c X^k$.  A simple computation shows that $\psi$ is an Eisenstein symbol; that is, $\psi \big| T_\ell = (\ell^{k+1} +1) \psi$.  Thus, the symbol $\Phi := \Psi \big| \left(T_\ell - (\ell^{k+1}+1)\right)$ is a lift of $(a_\ell - (\ell^{k+1} + 1)) \varphi$.  As long as $\varphi$ is not an Eisenstein symbol (at $\ell$), then one can rescale to get an overconvergent lift of $\varphi$.
+
+\item
+For a direct cohomological proof of the above theorem, see \cite{PS}.
+\end{enumerate}
+\end{remark}
+
+The following lemma will allow us to show that one can lift classical modular symbols to $\Dkrig$-valued modular symbols. In what follows, let $\bap$ denote the matrix $\psmallmat{1}{a}{0}{p}$.
+
+\begin{lemma}
+\label{lemma:forceintegral} If $\mu \in \Dkoc$, then $\mu \big|
+\bap \in \Dkrig$.  If $\Phi \in \MSo{\Dkoc}$, then $\Phi \big| U_p \in
+\MSo{\Dkrig}$.
+\end{lemma}
+
+\begin{proof}
+We have
+$$
+(\mu \big| \bap)(z^j) = \mu\left( (a+pz)^j \right) = \sum_{r=0}^j
+\binom{j}{r} a^{j-r} p^r \mu ( z^r ).
+$$
+Proposition \ref{prop:moments} implies that $\left\{ p^r \mu(z^r)\right\}$ is bounded, and thus $\mu \big| \bap \in \Dkrig$.
+
+For the second part of the lemma,
+$$
+(\Phi \big| U_p)(D) = \sum_{a=0}^{p-1} \Phi \left( \bap D \right)
+\big | \bap
+$$
+which lies in $\Dkrig$ by the first part of the lemma.
+\end{proof}
+
+\begin{cor}
+\label{cor:surj2} We have that
+$$
+\sp : \MSo{\Dkrig} \maps \MSo{V_k}
+$$
+is surjective.
+\end{cor}
+
+\begin{proof}
+Let $\varphi \in \MSo{V_k}$.  Without loss of generality, we may
+assume that $\varphi$ is in a generalized eigenspace for $U_p$ with eigenvalue
+$\lambda \neq 0$.  Let $\varphi'$ be some element of $\MSo{V_k}$ such that $\varphi' | U_p = \varphi$.  Then, by Theorem \ref{thm:surj1}, there is some $\Psi'
+\in \MSo{\Dkoc}$ lifting $\varphi'$.  Set $\Phi := 
+\Psi' | U_p$ which is in $\MSo{\Dkrig}$ by Lemma \ref{lemma:forceintegral}.
+Moreover, $\Phi$  lifts $\varphi$ as
+$$
+\sp(\Phi) =  \sp\left(\Psi' \big| U_p \right) =
+ \varphi' \big| U_p = \varphi.
+$$
+\end{proof}
+
+
+\subsection{The ordinary subspace of an operator}
+
+In this section, we discuss generalities about the slope zero subspace of a operator.  We will ultimately apply this theory to the operator $U_p / p^h$ to recover a subspace of modular symbols of slope $h$.  The results of this section are a very special case of the Riesz decomposition arising from a completely continuous operator (see \cite{Serre}).  
+
+\begin{lemma}
+Let $X$ be an abelian group and $u : X  \maps X$ a homomorphism
+with finite image.  Then there exists a unique decomposition
+$$
+X = X^{\ord} \oplus X^{\nil}
+$$
+such that $u$ is invertible on $X^{\ord}$ and nilpotent on
+$X^{\nil}$.  Moreover, $X^{\ord}$ is a finite set.
+\end{lemma}
+
+\begin{proof}
+For any element $x \in X$, consider the sequence, $\{x, ux, u^2x, \dots \}$.  Since $u$ has finite image, this sequence will
+eventually become periodic; denote by $N(x)$ the length of this
+period.  Set $X^{\ord}$ equal to the subgroup of $x \in X$ such that
+this sequence is {\it purely} periodic; that is,
+$$
+X^{\ord} := \{ x \in X ~:~ u^j x = x \text{~for~some~}j > 0 \}.
+$$
+Clearly, $u$ acts invertibly on $X^{\ord}$, and since the image of
+$u$ is finite, $X^{\ord}$ is finite. Set $X^{\nil}$ equal to the
+subgroup of $X$ consisting of all elements killed by some power of
+$u$.
+
+For any $x \in X$, the sequence $\{ u^{N(x)j} \}$ eventually
+stabilizes; denote by $x^{\ord}$ this stable value.  If
+$x^{\nil} = x - x^{\ord}$, we have that $u^{N(x) j}$ kills
+$x^{\nil}$ for $j$ large enough and thus $x^{\nil} \in X^{\nil}$.
+Therefore, since $X^{\ord} \cap X^{\nil} = \{0\}$, we have $X =
+X^{\ord} \oplus X^{\nil}$.
+\end{proof}
+
+Let $K/\Qp$ be a finite extension, and let $\O$ denote the ring of integers of $K$.
+
+\begin{prop}
+\label{prop:decomp} Let $V$ be a Banach space over $K$, and let
+$u: V \maps V$ be a completely continuous operator that preserves
+some bounded $\O$-submodule $L \subseteq V$ such that $L \otimes K = V$. Then there is a unique decomposition of Banach spaces
+$$
+V = V^{\ord} \oplus V^{\nil}
+$$
+where $u$ is topologically nilpotent on $V^{\nil}$, invertible on
+$V^{\ord}$, and such that $\{u^{-n}\}$ forms a bounded sequence of
+operators on $V^{\ord}$.  Moreover, the space $V^{\ord}$ has
+finite dimension over $K$, and the projection $V \maps V^{\ord}$
+is given by $\displaystyle x \mapsto \lim_{n \maps \infty}
+u^{n!}x$.
+\end{prop}
+
+\begin{proof}
+Since $u$ is a completely continuous operator, $u$ has finite
+image in $L / p^n L$ for any $n$.  In particular, by the previous
+lemma, we have a decomposition
+$$
+L / p^n L = (L / p^n L)^{\ord} \oplus (L / p^n L)^{\nil}
+$$
+for each $n$.  Moreover, the natural projection maps respect this decomposition on every level.  Thus, if we define 
+$$
+L^{\ord} := \varprojlim_n (L / p^n L)^{\ord}
+\text{~and~}
+L^{\nil} := \varprojlim_n (L /
+p^n L)^{\nil},
+$$ 
+we get the decomposition
+$$
+L  = L^{\ord} \oplus L^{\nil}.
+$$
+Tensoring by $K$ then yields the desired decomposition.  
+
+Note that since $(L / p L)^{\ord}$ is finite, by Nakayama's lemma, $L^{\ord}$ has finite rank over $\O$, and thus $V^{\ord}$ is finite dimensional over $K$.  The remaining properties of the decomposition follow from the corresponding properties of the decomposition at each finite level.
+\end{proof}
+
+
+
+
+\subsection{Forming overconvergent eigensymbols}
+
+Let $\varphi \in \MSo{V_k} \otimes K$ be an eigensymbol for the
+full Hecke-algebra of slope $h$ where $K$ is some finite extension
+of $\Qp$ containing the system of eigenvalues attached to
+$\varphi$. Let $\lambda$ denote the eigenvalue of $U_p$
+acting on $\varphi$; note that $\ord_p(\lambda) = h$ where $h$
+lies between $0$ and $k+1$. Set
+$$
+X_\varphi := \left(\sp\right)^{-1}(K \cdot \varphi) \subseteq \MSo{\Dkrig}
+\otimes K.
+$$
+(In particular, $X_\varphi$ contains the kernel of specialization.)
+
+\begin{prop}
+\label{prop:Xdecomp} There is a unique decomposition
+$$
+X_\varphi \cong X_\varphi^{(=h)} \oplus X_\varphi^{(>h)}
+$$
+where $\lambda^{-1} U_p$ is topologically nilpotent on $X_\varphi^{(>h)}$,
+invertible on $X_\varphi^{(=h)}$ and such that $\{\lambda^n U_p^{-n} \}$
+forms a bounded sequence of operators on $X_\varphi^{(=h)}$.  Moreover,
+$X_\varphi^{(=h)}$ is finite-dimensional over $K$.
+\end{prop}
+
+\begin{proof}
+Let $u := \lambda^{-1} U_p$.  By Proposition \ref{prop:decomp}, it suffices to show that there is some lattice of $X_\varphi$ preserved by $u$.  Let $X_\varphi^0$ be the unit ball of $X_\varphi$, and let
+$$
+Y_\varphi = \left\{ \Phi \in X_\varphi^0 :  ||\Phi(D)(z^{j})|| \leq p^{-(h-j)} \text{~for~}0 \leq j \leq \lfloor h \rfloor, ~D \in \Delta_{0}  \right\}.\footnote{In the course of the proof, we will see that the unit ball of $X_\varphi$ is not necessarily preserved by $u$ which is the reason we are using this smaller space.}
+$$ 
+
+Let $\Phi$ be any symbol in $Y_\varphi$; we will check that $\Phi | u \in Y_\varphi$.  To see that $\Phi \big| u \in X_\varphi^0$, we compute
+\begin{align*}
+(\Phi \big| u)(D)(z^r) 
+&= \lambda^{-1} \cdot \sum_{a=0}^{p-1} (\Phi(D_a) \big| \bap)(z^r) \\
+&= \lambda^{-1} \cdot \sum_{a=0}^{p-1} \Phi(D_a)\left( (a+pz)^r \right) \\
+&= \lambda^{-1} \cdot \sum_{a=0}^{p-1} \sum_{j=0}^r a^{r-j} p^j \Phi(D_a)(z^j)
+\end{align*}
+where $D_a = \bap D$.  By our assumption that $\Phi \in Y_\varphi$, we have that 
+$$
+|| p^j \Phi(D_a)(z^j) || \leq p^{-h}.$$
+Thus,
+$$|| (\Phi \big| u)(D)(z^r) || \leq p^{h} \cdot p^{-h} \leq 1,$$
+and $||\Phi \big| u|| \leq 1$. 
+
+To check that $\Phi \big|u \in Y_\varphi$, note that if $\Psi_1$ and $\Psi_2$ are two symbols in $X_\varphi^0$ such that $\sp(\Psi_1)=\sp(\Psi_2)$, then $\Psi_1 \in Y_\varphi$ if and only if $\Psi_2 \in Y_\varphi$.  Since
+$$
+\sp(\Phi | u) =  \lambda^{-1} \sp(\Phi) | U_p =
+\sp(\Phi),
+$$
+$\Phi \in Y_\varphi$ implies $\Phi \big|u \in Y_\varphi$.
+
+Hence, $Y_\varphi$ is preserved by $u$ and our proposition follows from Proposition \ref{prop:decomp}.
+\end{proof}
+
+\begin{remark}
+By carefully following the above proof, we will see in section \ref{sec:iter} that one can apply $\lambda^{-1} U_p$ to our representation of an element of $X_\varphi$ without losing any accuracy even in the case when $\lambda$ is not a unit. Maintaining a constant accuracy will be essential in our applications since projecting to the slope $h$ subspace requires iterating the operator $u$.
+\end{remark}
+
+\begin{thm}
+\label{thm:eigenOMS} If $\varphi \in \MSo{V_k} \otimes K$ is a
+Hecke-eigensymbol, then there exists a non-zero Hecke-eigensymbol
+$\Phi \in \MSo{\Dkrig} \otimes K$ with the same system of
+eigenvalues as $\varphi$.
+\end{thm}
+
+
+\begin{proof}
+Let $h$ be the slope of $\varphi$ and set $X_\varphi :=
+\left(\sp\right)^{-1}(K \cdot \varphi)$.  By Corollary
+\ref{cor:surj2} and Proposition \ref{prop:Xdecomp}, we have a
+surjective map
+$$
+X_\varphi^{(=h)} \oplus X_\varphi^{(>h)} \maps K \cdot \varphi.
+$$
+Note that $\sp$ kills $X_\varphi^{(>h)}$ as $\varphi$ has slope $h$, and thus
+$$
+X_\varphi^{(=h)} \maps K \cdot \varphi
+$$
+is surjective.  The source and (of course) the target of this map
+are finite-dimensional over $K$.  Thus, the following lemma from linear
+algebra establishes our theorem.
+\end{proof}
+
+\begin{lemma}
+\label{lemma:linearalg} Let $V$ and $W$ be finite-dimensional vector spaces over a field $K$.  Let $\{T_i: V \maps W \}$ be a countable family of commuting operators, and let $\psi:V \maps W$ be a surjective linear map equivariant for each $T_i$.  Then any $K$-valued system of eigenvalues for the family $\{T_i\}$ occurring in $W$ also occurs in $V$.
+\end{lemma}
+
+\begin{proof}
+Let $w \in W$ be some simultaneous eigenvector for the $T_i$.  Replacing $W$ with $K \cdot w$ and $V$ with $\psi^{-1}(K\cdot w)$, we may assume that $W$ is one-dimensional.  As the $T_i$ commute, we have $V = \oplus_j V_j$ with each $V_j$ a simultaneous pseudo-eigenspace for the family $\{T_i\}$.  Since $\psi$ is non-zero, one of the $V_j$ must have the same system of eigenvalues as $W$.  Lastly, since these eigenvalues are in $K$, there is some bonafide eigenvector in $V$ giving rise to these eigenvalues.
+\end{proof}
+
+\begin{remark}
+\label{rmk:LA}
+One cannot in general find a $\{T_i\}$-eigenvector that maps to $w$. The set of all such eigenvectors with the same eigenvalues as $w$ might lie entirely within the kernel of $\psi$. It is for this reason that in Theorem \ref{thm:eigenOMS} we cannot conclude solely from linear algebra that there is an overconvergent eigensymbol that {\it lifts} $\varphi$.
+\end{remark}
+
+
+\subsection{Comparison theorems}
+
+The following theorem is proven by the second author in \cite{Stevens} -- see also \cite[Theorem 5.3]{PS}.  We offer the following ``constructive" proof of this theorem.
+
+
+\begin{thm}
+\label{thm:comparison} The composition
+$$
+\MSo{\Dkla}^{(<k+1)} \lra \MSo{\Dkrig}^{(<k+1)} \stackrel{\sp}{\lra} \MSo{V_k}^{(<k+1)}
+$$
+is an isomorphism.  That is, the specialization map restricted to
+the subspace where $U_p$ acts with slope strictly less than $k+1$
+is an isomorphism.
+\end{thm}
+
+\begin{proof}
+The first map is an isomorphism by \cite[Lemma 5.2]{PS}, and thus we concentrate on the second map.  
+
+We have
+$$
+(\Phi \big| U_p)(D)(z^r) 
+= \sum_{a=0}^{p-1}  \Phi(D_a)\left((a+pz)^r \right)
+= \sum_{a=0}^{p-1} \sum_{j=0}^r \binom{r}{j} a^{r-j} p^j \Phi(D_a)(z^j)
+$$
+where $D_a = \bap D$.  For $\Phi$ in the kernel of specialization, $\Phi(D_a)(z^j) = 0$ for $j \leq k$, and the right hand side above is divisible by $p^{k+1}$.
+Thus, $U_p$ acts on the kernel of specialization with slope at least $k+1$.  In particular, $\sp$ is injective when restricted to the subspace where $U_p$ acts with slope less than $k+1$.
+
+The surjectivity of $\sp$ now follows from Theorem \ref{thm:eigenOMS}.  Indeed, let $\varphi$ be a Hecke-eigensymbol in  $\MSo{V_k}^\pm \otimes \Qpbar$ with slope $h < k+1$.
+By the above arguments, the surjective map in the proof of Theorem
+\ref{thm:eigenOMS},
+$$
+X_\varphi^{(=h)} \maps \Qpbar \cdot \varphi,
+$$
+is also injective.  Thus, the overconvergent symbol $\Phi$ of
+Theorem \ref{thm:eigenOMS} specializes to a non-zero
+multiple of $\varphi$. Hence, the specialization map is an
+isomorphism after extending scalars to $\Qpbar$, and thus is an
+isomorphism before extending scalars.
+\end{proof}
+
+
+\begin{remark}
+\label{rmk:explicit}
+The proof of Theorem \ref{thm:eigenOMS} is essentially constructive.  For any Hecke-eigensymbol $\varphi \in \MSo{V_k}$ of slope $h < k+1$, one lifts $\varphi$ to some overconvergent symbol in $\MSo{\Dkoc}$.  This lifting is explicitly described in Theorem \ref{thm:surj1}.  To get a lifting in $\MSo{\Dkrig}$ (and thus in $X_\varphi$) one applies $\lambda^{-1} U_p$ as described in Corollary \ref{cor:surj2}.  Let $\Phi$ denote this lifting.  Then the projection of $\Phi$ to $X_\varphi^{(=h)}$ is given by  $\displaystyle \Phi^0 := \lim_{n \maps \infty} \Phi | u^{n!}$, which is the overconvergent symbol we are seeking.
+\end{remark}
+
+In \cite{PS}, the following theorem on the critical slope subspace of $\MSo{\Dkrig}$ is established.  (Here critical slope means slope $k+1$.)  In the statement of the theorem, $\theta_k$ denotes the $\theta$-operator on overconvergent modular forms which takes forms of weight $-k$ to forms of weight $k+2$.  Further, the subscript of $(f)$ denotes the pseudo-eigenspace with the same Hecke-eigenvalues as $f$.
+
+\begin{thm}
+\label{thm:criticalslope}
+Let $f$ be an eigenform of $S_{k+2}(\Gamma_0,\Qpbar)$ with slope $k+1$.  Then
+$$
+\MSo{\Dkrig}_{(f)} \stackrel{\sim}{\lra} \MSo{V_k}_{(f)}
+$$
+is an isomorphism if and only if $f \notin \im(\theta_k)$.
+\end{thm}
+
+\vspace{.1cm}
+
+\begin{remark}
+~
+\begin{enumerate}
+\item
+Applying the algorithm described in Remark \ref{rmk:explicit} when the slope of $\varphi$ is exactly $k+1$ yields a symbol $\Phi^0$ of slope $k+1$ which lifts $\varphi$ and that, by Proposition \ref{prop:Xdecomp}, has a finite-dimensional Hecke span.  It is then just an exercise in linear algebra to produce a Hecke-eigensymbol $\Phi$ with the same Hecke-eigenvalues as $\varphi$.  
+\vspace{.1cm}
+\item
+If $f$ is the critical slope $p$-stabilization of a $p$-ordinary CM modular form, then $f$ is in the image of $\theta_k$ (see \cite[Proposition 7.1]{Coleman}).  Thus, by Theorem \ref{thm:criticalslope}, the specialization map is not an isomorphism on $f$-isotypic subspaces.  In section \ref{sec:exs}, numerical data will be presented that suggests that up to scaling there is a unique Hecke-eigensymbol in $\MSo{\Dkrig}^\pm_{(f)}$.
+However, this symbol appears to be in the kernel of specialization.
+\end{enumerate}
+\end{remark}
+
+\section{The connection to $p$-adic $L$-functions}
+
+\subsection{An aside on distributions}
+The space of distributions $\bD[r]$ is naturally a Banach space with norm  $|| \cdot ||_r$ as defined in section \ref{sec:dist}.  Since $\Dla$ lies inside of $\bD[r]$ for every $r>0$, $\Dla$ inherits a family of norms $\{ || \cdot ||_r \}$ satisfying $|| \mu ||_{r_1} \geq || \mu ||_{r_2}$ for $r_1 \leq
+r_2$.  It is natural to classify distributions $\mu \in \Dla$ by the growth of $|| \mu ||_r$ as $r \to 0^+$.
+
+\begin{defn}
+For $\mu \in \Dla$, we say that $\mu$ is {\it $h$-admissible} if $|| \mu||_r$ is $\OO(r^{-h})$ as $r \to 0^+$.  
+\end{defn}
+
+\begin{lemma}
+\label{lemma:admis} 
+If $\Phi \in \MSo{\Dla}$ is a $U_p$-eigensymbol
+of slope $h$, then all of the values of $\Phi$ are $h$-admissible distributions.
+\end{lemma}
+
+\begin{proof}
+Let $\lambda$ denote the $U_p$-eigenvalue of $\Phi$.  For a positive real number $r$, a positive integer $n$, and $D \in \Delta_0$, we have
+\begin{align*}
+|| \Phi(D) ||_{\frac{r}{p^n}} &= |\lambda|^{-n} || (\Phi \big|
+U_p^n)(D) ||_{\frac{r}{p^n}} \\
+&\leq |\lambda|^{-n} \max_{0 \leq a \leq p^n-1} || \Phi(\bapn D) \big|
+\bapn
+||_{\frac{r}{p^n}} \\
+&\leq |\lambda|^{-n} \max_{0 \leq a \leq p^n-1} ||
+\Phi(\bapn D) ||_r \\
+& \leq |\lambda|^{-n}||\Phi||_r.
+\end{align*}
+The second to last inequality follows from the fact that for any $\mu \in
+\Drigv{r}$ and any $\gamma \in \sigop$ with $\det(\gamma)=p^n$, we
+have 
+$$
+|| \mu \big| \gamma||_{\frac{r}{p^n}} \leq || \mu ||_r.
+$$
+The above inequalities imply that $\Phi(D)$ is $h$-admissible.
+\end{proof}
+
+\subsection{$p$-adic $L$-functions}
+Fix an embedding of $\Qbar$ into $\Qpbar$, and let $f$ be a normalized eigenform in $S_{k+2}(\Gamma,\Qbar) \subseteq S_{k+2}(\Gamma,\Qpbar)$ with slope $h  < k+1$.  The $p$-adic $L$-function of $f$ is the $h$-admissible $p$-adic distribution $\mu_f \in \D(\Zpx)$ which satisfies the following interpolation property: if $\chi$ is a finite order character of $\Zp^\times$ with conductor $p^n$, and $j$ is an integer between $0$ and $k$,
+then
+\begin{equation}
+\label{eqn:interpolate}
+\mu_f(z^j \cdot \chi) = \frac{1}{\alpha^n} \cdot \frac{p^{n(j+1)}}{(-2\pi i) ^j} \cdot \frac{j!}{\tau(\chi^{-1})} \cdot \frac{L(f,\chi^{-1},j+1)}{\Omega_f^\pm}
+\end{equation}
+where $\alpha$ is the $U_p$-eigenvalue of $f$, $\tau(\chi^{-1})$ is a Gauss sum, and $\Omega_f^\pm$ are complex periods.  Since $h < k+1$ and $\mu_f$ is $h$-admissible, the above interpolation property uniquely determines $\mu_f$.
+
+The above $p$-adic $L$-function can be constructed by first defining a distribution on locally polynomial functions of degree less than or equal to $k$.  Explicitly, this distribution is given by
+\begin{multline}
+\label{eqn:pL}
+\mu^\pm_f(z^j \cdot {\bf 1}_{a+p^n\Zp}) = \\
+\frac{1}{\alpha^n} \cdot 
+ \left(  \int_\infty^{a/p^n} (-p^nz+a)^j f(z) dz \pm \int_{\infty}^{-a/p^n} (p^nz+a)^j f(z) dz \right) \frac{\pi i}{\Omega^\pm_f}
+\end{multline}
+for each integer $j$ between $0$ and $k$.  One proves that $\mu^\pm_f$ extends to unique $h$-admissible distribution in $\D(\Zpx)$ (see \cite{AV,Visik,MTT}).   The $p$-adic $L$-function of $f$ is then the distribution $\mu_f := \mu^+_f + \mu^-_f$.
+
+\subsection{$p$-adic $L$-functions and Hecke-eigensymbols}
+
+In what follows, we sketch an alternative construction of this $p$-adic $L$-function through overconvergent modular symbols.  To this end, we first note that the $f$-isotypic subspace of  $\MSo{V_k}^\pm \otimes \Qpbar$ is one-dimensional.  Let $\varphi_f^\pm$ be a generator of this space, normalized so that $\varphi_f^\pm$ takes on only integral values and at least one unit value.  Explicitly, $\varphi_f^\pm$ can be defined by
+\begin{multline*}
+\varphi^\pm_f(\{r\} - \{s\}) = 
+ \left(  \int_r^{s} f(z) (zX+Y)^k dz \pm (-1)^k \int_{-r}^{-s} f(z) (zX-Y)^k dz \right) \frac{\pi i}{\Omega^\pm_f}
+\end{multline*}
+where the periods $\Omega_f^\pm$ are appropriately chosen.  By definition, $\varphi^\pm_f$ is a Hecke-eigensymbol with the same system of eigenvalues as $f$.
+
+Since we are assuming that $f$ is non-critical, Theorem \ref{thm:comparison} implies that there is a unique overconvergent modular symbol $\Phi^\pm_f \in \MSo{\Dla}^\pm$ which specializes to the symbol $\varphi^\pm_f$.  We then have the following relationship between $\Phi_f := \Phi^+_f + \Phi^-_f$ and the $p$-adic $L$-function of $f$.
+
+\begin{prop}
+\label{prop:OMStoPL}
+For $f$ of slope strictly less than $k+1$, we have
+$$
+\Phi_f(\{\infty\} - \{0 \})\big|_{\Zpx} = \mu_f,
+$$
+the $p$-adic $L$-function of $f$ computed with respect to the periods $\Omega^\pm_f$.
+\end{prop}
+
+\begin{proof}
+By Lemma \ref{lemma:admis}, $\Phi^\pm_f(\{\infty\} - \{0 \})$ is an $h$-admissible distribution with $h<k+1$.  Thus, to check the equality of this proposition, it suffices to see that $\Phi^\pm_f(\{\infty\} - \{0 \})$ and $\mu^\pm_f$ agree on locally polynomial functions of degree less than $k+1$.
+
+Note that 
+\begin{align*}
+\Phi^\pm_f(\{\infty\} - \{ 0\}) &= \alpha^{-n} (\Phi^\pm_f | U_p^n)(\{\infty\} - \{0\}) \\
+&= \alpha^{-n} \sum_{a=0}^{p^n-1} \Phi^\pm_f\left( \{\infty\} -
+\{a/p^n\} \right) \big| \bapn
+\end{align*}
+where $\alpha$ is the $U_p$-eigenvalue of $\Phi_f^\pm$.
+For any distribution $\mu \in \Dla$, the support of $\mu \big|
+\bapn$ is contained in $a+p^n\Zp$.  Thus, for $0 \leq j \leq k$, 
+\begin{align*}
+\Phi^\pm_f(\{\infty\} - \{0\})&(z^j \cdot {\bf 1}_{a + p^n\Zp})  \\
+&= \alpha^{-n} \left( \Phi^\pm_f\left(\{\infty\} - \{a/p^n\} \right) \big| \bapn \right)(z^j \cdot {\bf 1}_{a + p^n\Zp}) \\
+&= \alpha^{-n} \Phi^\pm_f\left( \{\infty\} - \{a/p^n\} \right)\left((p^nz+a)^j\right). 
+\end{align*}
+Then, using the fact that $\sp(\Phi^\pm_f) = \varphi^\pm_f$, a direct computation finds that 
+\begin{multline*}
+\Phi^\pm_f(\{\infty\} - \{a/p^n\})\left(Q(z)\right) =\\
+\left( 
+\int_\infty^{a/p^n} Q(-z) f(z) ~dz
+\pm 
+\int_\infty^{-a/p^n} Q(z) f(z) ~dz
+\right)
+\frac{\pi i}{\Omega^\pm_f}  
+\end{multline*}
+where $Q(z)$ is any polynomial of degree less than or equal to $k$.
+Taking $Q(z) = (p^nz+a)^j$ yields
+\begin{align*}
+\Phi^\pm_f&(\{\infty\} - \{0\})(z^j \cdot {\bf 1}_{a + p^n\Zp})  \\
+&= \alpha^{-n} \Phi^\pm_f(\{\infty\} - \{a/p^n\}) \left( (p^nz+a)^j \right) \\
+&= 
+\alpha^{-n} 
+\left(
+\int_\infty^{a/p^n} (-p^nz+a)^j f(z) ~dz
+\pm 
+\int_\infty^{-a/p^n} (p^nz+a)^j f(z) ~dz
+\right) \frac{\pi i}{\Omega^\pm_f}.
+\end{align*}
+Comparing with (\ref{eqn:pL}), we see that $\Phi^\pm_f(\{\infty\} - \{0\})$ and $\mu^\pm_f$ agree on locally polynomial functions of degree less than or equal to $k$.  As both distribution are $h$-admissible with $h < k+1$, they must be equal and the proposition follows.
+\end{proof}
+
+\subsection{The critical slope case}
+
+We now consider the case where $f$ has slope equal to $k+1$.  In this case, the interpolation property (\ref{eqn:interpolate}) does not uniquely determine a $(k+1)$-admissible distribution.  Moreover, the distribution defined on locally polynomial functions of degree less than $k+1$ in (\ref{eqn:pL}) does not uniquely extend to a distribution in $\Dla$.
+
+In light of Proposition \ref{prop:OMStoPL}, we make the following definition of the $p$-adic $L$-function of a critical slope form.
+
+\begin{defn}
+\label{def:critical} 
+Let $f$ be an eigenform in $S_k(\Gamma,\Qpbar)$ of slope $k+1$ which is not in the image of $\theta_k$.  Let $\Phi_f$ be the unique overconvergent eigensymbol (of Theorem \ref{thm:criticalslope}) which specializes to $\varphi_f^+ + \varphi_f^-$.  We define the $p$-adic $L$-function of $f$ to be
+$$
+\mu_f := \Phi_f(\{ \infty \} - \{ 0 \})\big|_{\Zpx} \in \D(\Zpx).
+$$
+\end{defn}
+
+The following proposition describes the interpolation property of
+this critical $p$-adic $L$-function.  It is a formal consequence
+of the fact that $\Phi_f$ is a $U_p$-eigensymbol lifting
+$\varphi_f^+ + \varphi_f^-$ as in Proposition \ref{prop:OMStoPL}.
+
+\begin{prop}
+Let $f$ and $\mu_f$ be as above, and let $\beta$ denote the $U_p$-eigenvalue of $f$.  If $\chi$ is a finite order character of $\Zp^\times$ with conductor $p^n$ and $j$ is an integer between $0$ and $k$, then 
+\begin{equation}
+\mu_f(z^j \cdot \chi) = \frac{1}{\beta^n} \cdot \frac{p^{n(j+1)}}{(-2\pi i) ^j} \cdot \frac{j!}{\tau(\chi^{-1})} \cdot \frac{L(f,\chi^{-1},1)}{\Omega_f^\pm}.
+\end{equation}
+\end{prop}
+
+Examples of these critical $p$-adic $L$-functions (especially
+their zeroes) will be given in section \ref{sec:exs}.
+
+
+
+\section{Finite approximation modules}
+\label{sec:approx}
+
+In this section, we describe a systematic method of approximating distributions, which will be used to carry out explicit computations in spaces of overconvergent modular symbols.
+
+\subsection{A $\sigop$-stable filtration on distributions}
+\label{sec:filt}
+
+Let 
+$$
+\Dkrig^0 = \left\{  \mu \in \Dkrig \mid
+\mu(x^j) \in \Zp \text{~for~all~} j\geq 0
+\right\}
+$$
+denote the set of distributions with integral moments. By Proposition \ref{prop:moments}, this subspace is the unit ball of $\Dkrig$ under $||\cdot ||_1$.  A first guess on how to form an approximation of an element $\mu \in \Dkrig^0$ is to fix two integers $M$ and $N$, and consider the first $M$ moments of $\mu$ modulo $p^N$. Unfortunately, these approximations are not stable under the action of $\sigop$; that is, given such an approximation of $\mu$, one cannot compute the corresponding approximation of $\mu \big| \gamma$ to the same accuracy.  Indeed,  the collection of subspaces
+$$
+\left\{ \mu \in \Dkrig^0 \mid \mu(z^j) = 0 \text{~for~} j \leq M
+\right\}
+$$
+is not in general $\sigop$-stable.
+Instead, we consider larger subspaces which produce a filtration of $\Dkrig^0$ compatible with the action of $\sigop$.  
+
+\begin{prop}
+\label{prop:filt}
+The subspace
+$$
+\Fil^M \Dkrig^0 = \left\{  \mu \in \Dkrig^0 \text{~such~that~} \mu(z^j) \in p^{M-j} \Zp \right\}
+$$
+is a $\sigop$-module under the weight $k$ action for $k \geq 0$.
+\end{prop}
+
+\begin{proof}
+Let $\mu \in \Fil^M \Dkrig^0$.   For $j \leq M$, we must show that $p^{M-j}$ divides $(\mu \big| \gamma)(z^j)$.  We compute
+\begin{align*}
+(\mu \big| \gamma)(z^j) &= \mu \left( (a+cz)^{k-j} (b+dz)^j\right) \\
+&= \mu \left( \left( \sum_{m=0}^\infty \binom{k-j}{m} a^{k-j-m} c^m z^m
+\right)
+\left( \sum_{m=0}^j \binom{j}{m} b^{j-m} d^m z^m \right) \right) \\
+&= \mu \left( \sum_{s=0}^\infty c_s z^s \right) 
+=  \sum_{s=0}^\infty c_s \mu(z^s),
+\end{align*}
+for some $c_s \in \Zp$.  Since $\mu \in \Fil^M(\Dkrig^0)$, we have that $\mu(z^s)$ is divisible by $p^{M-s}$.  Moreover, an easy computation with the explicit formula above yields that $c_s$ is divisible by $p^{s-j}$.  Thus, the above sum is divisible by $p^{M-j}$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{lemma:sepcom}
+The filtration $\left\{ \Fil^M \Dkrig^0\right\}$ on $\Dkrig^0$ is separated and complete.
+\end{lemma}
+
+\begin{proof}
+This is clear from the definitions and from Proposition \ref{prop:moments}.
+\end{proof}
+
+
+\subsection{Approximating distributions}
+
+We now use the filtration $\left\{ \Fil^M \Dkrig^0\right\}$ to systematically approximate distributions.
+
+\begin{defn}
+For $M>k$, we define the $M$-th {\it finite approximation module} of $\Dkrig^0$ to be
+$$
+\FkM := \Dkrig^0 / \Fil^M(\Dkrig^0).
+$$
+\end{defn}
+
+\vspace{.1cm}
+
+\begin{prop}
+\label{prop:finite}
+We have that $\FkM$ is a $\sigop$-module and 
+\begin{align*}
+\FkM &\stackrel{\sim}{\maps} (\Z / p^M \Z) \times (\Z / p^{M-1} \Z) \times \dots \times (\Z / p \Z) \\
+ \overline{\mu} &\mapsto \left(\mu(z^j) + p^{M-j} \Zp \right)_j
+\end{align*}
+is an isomorphism.  In particular, $\FkM$ is a finite set.
+\end{prop}
+
+\begin{proof}
+Since $\Fil^M(\Dkrig^0)$ is a $\sigop$-module, $\FkM$ is also a $\sigop$-module.   The fact that this map is an isomorphism follows
+directly from the definition of the filtration and Proposition \ref{prop:moments}.
+\end{proof}
+
+By the above proposition, we can approximate $\mu \in \Dkrig^0$ with a finite amount of data by taking its image in $\FkM$.  Moreover, by Lemma \ref{lemma:sepcom}, $\mu$ is determined by its image in $\FkM$ for every $M$.
+
+
+A downside to this description of $\FkM$ is that it only allows us to approximate distributions with integral moments.
+However, as we saw in solving the difference equation $\mu \big| \Delta = \nu$, it will be important to be able to work with distributions whose
+coefficients are not integral (not even bounded!).  To remedy this problem, consider the space:
+$$ 
+\K_0 = \left\{ \mu \in \Dkocv{p} \mid p^j \mu(z^j) \in \Zp 
+\right\}.
+$$
+Note that by definition $\Dkrig^0 \cap p^M \K_0 =
+\Fil^M(\Dkrig^0)$.  This gives the following alternate description of
+$\FkM$:
+$$
+\FkM \cong  \Dkrig^0 / (\Dkrig^0 \cap p^M \K_0) \cong (\Dkrig^0 + p^M \K_0) / p^M \K_0.
+$$
+The following section will use this description of $\FkM$ to approximate solutions to the difference equation.
+
+
+\subsection{Difference equation in $\FkM$}
+
+Theorem \ref{thm:diffeqn} gives an explicit solution to the
+difference equation $\mu \big| \Delta = \nu$ in $\Dkoc$ which
+required division by powers of $p$.  Following the same approach
+in $\FkM$ leads to mild difficulties since $p$ does not act
+invertibly on $\FkM$. To remedy this problem, we will need to
+assume that $\nu$ is divisible by a small power of $p$. The following lemma keeps track of the denominators that appear from solving the difference equation in $\Dkoc$; from this lemma, it will be easy to describe how to solve the difference equation in $\FkM$.
+
+
+\begin{lemma}
+\label{lemma:denom} Let $\mu \in \Dkoc$ such that $\mu\big| \Delta = \nu \in \Dkrig^0$.  If $m,M \geq 0$ are integers for which $p^m > M+1$, then
+$$
+p^m \mu \in \Dkrig^0 + p^M \K_0.
+$$
+\end{lemma}
+
+\begin{proof}
+From the explicit construction of Theorem \ref{thm:diffeqn}, we
+know that $\mu$ equals a sum of terms of the form $\eta_j/(j+1)$
+scaled by integral coefficients. Thus, to prove the lemma, it
+suffices to prove that if $p^m>M+1$, then 
+$$
+p^m\cdot \frac{1}{j+1}\cdot \eta_j \in \Dkrig^0 + p^M\K_0
+$$
+for all $j\ge 0$.  For this, it suffices to show that for all integers $n,j$ with $n\ge j \ge 0$,
+\begin{align*}
+\frac{p^m}{j+1} \binom{n}{j} b_{n-j} &\in \Zp \text{~~if~~} n < M, \\
+p^n \cdot \frac{p^m}{j+1} \binom{n}{j} b_{n-j} &\in p^M \Zp \text{~~if~~} n \geq M.
+\end{align*}
+In the first case, $p^m > M+1> j+1$ and thus, $\ord_p(p^m/(j+1)) \ge 1$.  The assertion then follows from the von Staudt-Clausen theorem.
+
+In the second case, write $n = M+r$ with $r\ge
+0$ and so $p^{m+r}>M+1+r = n+1$.  Thus $\ord_p(p^{m+r}/(j+1))\ge 1$ for every
+$j\ge 0$ with $j\le n$.  Again, from the Clausen-von Staudt theorem, it follows that
+$$
+\frac{p^{m+r}}{j+1}\binom{n}{j} b_{n-j}\in \Zp,
+$$
+and consequently that
+$$
+p^n\cdot \frac{p^m}{j+1} \binom{n}{j} b_{n-j}  = p^M \cdot \frac{p^{m+r}}{j+1}
+\binom{n}{j} b_{n-j} \in p^M\Zp.
+$$
+\end{proof}
+
+\begin{cor}
+\label{cor:liftFM} 
+If $\nu \in p^m \FkM$ has total measure zero with $p^m > M+1$, then there exists $\mu \in \FkM$ such that $\mu \big| \Delta = \nu$.
+\end{cor}
+
+\begin{proof}
+First lift $\nu$ to some element $\tilde{\nu}$ of $p^m \Dkrig^0$ with total measure zero.  Then, solving the difference equation, yields $\tilde{\mu} \in \Dkoc$ such that $\tilde{\mu}\big| \Delta = \tilde{\nu}$.  By Lemma \ref{lemma:denom}, we have that $\tilde{\mu} \in \Dkrig^0 + p^M \K_0$ as $\tilde{\nu}$ is divisible by $p^m$.  Since
+$$
+\FkM \cong (\Dkrig^0 + p^M \K_0) / p^M \K_0,
+$$ 
+we can project $\tilde{\mu}$ to some element $\mu$ in $\FkM$, and we have $\mu \big| \Delta = \nu$ as desired.
+\end{proof}
+
+\section{Computing Hecke-eigenlifts}
+
+\subsection{Lifting symbols}
+
+
+We begin by describing approximations of elements in $V_k$ which are compatible with our approximations of distributions (relative to $\spd$). To this end, let $L_k$ denote the image of $\Dkrig^0$ under $\spd$ in $V_k$.\footnote{Note that $L_k$ is in general smaller than $\Sym^k(\Zp^2)$ because of the presence of binomial coefficients in the definition of $\spd$.} For $M>k$, let $\Fil^M(L_k)$ denote the image of $\Fil^M(\Dkrig^0)$, and set
+$$
+L_k(M) = L_k / \Fil^M(L_k).
+$$
+By construction, the map $\spd$ reduces to give a map $\FkM \stackrel{\ol{\rho}_k}{\lra} L_k(M)$, which in turn induces
+$$
+\olsp : \MSo{\FkM} \maps \MSo{L_k(M)}.
+$$
+
+\begin{lemma}
+Let $\varphi \in p^{m+1} \MSo{L_k}$ with $p^m > M+1$.  Then, there exists $\Phi \in \MSo{\Dkrig^0+p^M \K_0}$ such that $\sp(\Phi)=\varphi$.
+\end{lemma}
+
+\begin{proof}
+Theorem \ref{thm:surj1} guarantees the existence of $\Phi \in \MSo{\Dkoc}$ lifting $\varphi$.  By following through the explicit proof of this theorem, we will see that $\Phi$ can be constructed to take values in $\Dkrig^0+p^M\K_0$ when $\varphi$ is divisible by $p^m$.  Indeed, we can take $\Phi(D_i)$ in $p^{m+1} \Dkrig^0$ and $\Phi(D'_i)$, $\Phi(D''_i)$ in $p^m \Dkrig^0$.\footnote{One could take the exponent here to be $m+1$ as long as $p \neq 2,3$.}
+  Then, in forming $\Phi(D_\infty)$, one needs to solve the difference equation $\mu_\infty \big| \Delta = \nu_\infty$ with $\nu_\infty \in p^m \Dkrig^0$.  By Corollary \ref{cor:liftFM}, the solution to this equation is in $\Dkrig^0 + p^M \K_0$ as desired.
+\end{proof}
+
+\begin{cor}
+Let $\varphi \in \MSo{L_k(M)}$ be in the image of $p^m \MSo{L_k}$.  If $p^{m} > M+1$, then there exists $\Phi \in \MSo{\FkM}$ which lifts $\varphi$.  Moreover, $\Phi \big| U_p$ is in the image of $\MSo{\Dkrig^0}$.
+\end{cor}
+
+\begin{proof}
+The first part follows from the previous lemma together with the description of $\FkM$ as $\Dkrig^0+p^M\K_0/p^M\K_0$. The second part follows from the fact that $\K_0 \big| \bap \subseteq \Dkrig^0$ as in Lemma \ref{lemma:forceintegral}.
+\end{proof}
+
+\subsection{The operator $\lambda^{-1} U_p$} 
+\label{sec:iter}
+
+In this subsection, we will make sense of the operator $\lambda^{-1} U_p$ on a certain subspace of $\MSo{\FkM}$ (even in the case when $\lambda$ is not a unit).
+
+Let $\varphi$ be an eigensymbol. 
+As in Proposition \ref{prop:Xdecomp}, let $X_\varphi = (\sp)^{-1} (K \cdot \varphi) \subseteq \MSo{\Dkrig} \otimes K$, and let 
+$$
+Y_\varphi = \left\{ \Phi \in X_\varphi^0 :   ||\Phi(D)(z^{j})|| \leq p^{-(h-j)} \text{~for~} 0 \leq j \leq \lfloor h \rfloor,~D \in \Delta_{0} \right\}
+$$ 
+where $X_\varphi^0$ is the unit ball of $X_\varphi$.  Recall that it was shown in Proposition \ref{prop:Xdecomp} that the operator $\lambda^{-1}U_p$ maps $Y_\varphi$ to $Y_\varphi$.  The following lemma will enable us to descend this operator to $\FkM$-valued modular symbols.  
+
+\begin{lemma}
+\label{lemma:des}
+If $\Phi \in Y_\varphi \cap \MSo{\Fil^M \Dkrig^0}$, then $\Phi \big| U_p \in \lambda \MSo{\Fil^M \Dkrig^0}$.
+\end{lemma}
+
+\begin{proof}
+We must show that $(\Phi | U_p)(D)(z^j)$ is divisible by $p^{M-j+\ord_p(\lambda)}$.  If $D_a = \bap D$, we have
+\begin{equation}
+\label{eqn:accuracy}
+(\Phi | U_p)(D)(z^j)
+= \sum_{a=0}^{p-1} \Phi(D_a)((a+pz)^j) 
+= \sum_{a=0}^{p-1}  \sum_{r=0}^j \binom{r}{j} a^{j-r} p^r \Phi(D_a)(z^r).
+\end{equation}
+Since $\Phi$ takes values in $\Fil^M \Dkrig^0$, $\Phi(D_a)(z^r)$ is divisible by $p^{M-r}$, and thus the entire sum is divisible by $p^M$.  Thus, if $j \geq \ord_p(\lambda)$, we have proven the desired divisibility.
+
+For $j < \ord_p(\lambda) \leq k+1$, the needed divisibility follows from the fact that $\sp(\Phi)$ is an eigensymbol.  Indeed, since $\sp(\Phi \big| U_p) = \lambda \sp(\Phi)$,  we have that 
+$$
+\ord_p((\Phi \big| U_p)(D)(z^j)) = \ord_p( \Phi(D)(z^j) ) + \ord_p(\lambda) \geq M-j + \ord_p(\lambda)
+$$
+as desired.
+\end{proof}
+
+Let $Y_{\varphi,M}$ denote the image of $Y_\varphi$ in $\MSo{\FkM}$.  The above lemma, together with Proposition \ref{prop:Xdecomp}, shows that the operator $\lambda^{-1} U_p$ descends to give a map
+$$
+\lambda^{-1}U_p : Y_{\varphi,M} \maps Y_{\varphi,M}.
+$$
+
+\begin{remark}
+\label{rmk:iter}
+One must take care in computing $\lambda^{-1} \Phi \big| U_p$ for $\Phi \in Y_{\varphi,M}$. If $j \geq \ord_p(\lambda)$, one can simply divide equation (\ref{eqn:accuracy}) by $\lambda$ to compute  $\lambda^{-1} (\Phi \big| U_p)(D)(z^j)$.  Indeed, in this equation, the terms $p^r \Phi(D_a)(z^r)$ are accurate modulo $p^M$.  Hence, division by $\lambda$ yields a value that is accurate modulo $p^{M-\ord_p(\lambda)}$ and thus modulo $p^{M-j}$.  
+
+However, if $j < \ord_p(\lambda) \leq k+1$, one must proceed differently.  Instead, note that the value of $\lambda^{-1} (\Phi \big| U_p)(D)(z^j)$ is the coefficient of $\binom{k}{j} Y^j X^{k-j}$ in $\lambda^{-1} \sp(\Phi \big| U_p)(D) = \sp(\Phi)(D)$ which is readily computed from the symbol $\Phi$.
+\end{remark}
+
+
+\subsection{Explicitly forming overconvergent Hecke-eigensymbols}  
+
+Let $f$ be an eigenform in $S_k(\Gamma_0)$, and let $\varphi = \varphi_f^\pm$ be the associated modular symbol.  In this section, we give an algorithm that produces an eigensymbol in $Y_{\varphi,M} \subseteq \MSo{\FkM}$ with the same Hecke-eigenvalues as $\varphi$.
+
+\vspace{.2cm}
+
+\noindent
+1) {\it Solve the Manin relations for $\Gamma$}:  Construct a fundamental domain $\F$ for the action of $\Gamma$ on $\H$ as in Theorems \ref{thm:fd} and \ref{thm:fd3}.  The proof of these theorems are explicit as is explained in Remark \ref{rmk:fd}.  From $\F$, one extracts divisors $\{ D_i \}$, $\{ D'_i \}$ and $\{ D''_i \}$ as in Theorems \ref{thm:gen} and \ref{thm:3tor} such that any element of $\MSo{M}$ is uniquely determined by its values on these divisors.
+
+\vspace{.2cm}
+
+\noindent
+2) {\it Form the modular symbol $\varphi_f$ in $\MSo{L_k(M)}$}: Constructing such a modular symbol is standard.  
+
+\vspace{.2cm}
+
+\noindent
+3) {\it Lift $\varphi$ to an $\FkM$-valued symbol}:
+By Corollary \ref{cor:liftFM}, there exists some symbol $\Phi$ in $\MSo{\FkM}$ lifting $p^{m+1} \varphi$ where $p^m > M+1$.  To form such a lift, follow the explicit proof of Theorem \ref{thm:surj1}.  Explicit equations for solving the difference equation are given in Theorem \ref{thm:diffeqn}.  Note that no denominators will be produced through this process because of the factor of $p^{m+1}$.  
+
+\vspace{.2cm}
+
+\noindent
+4) {\it Project to the slope $h$ subspace}:  First replace $\Phi$ with $\Phi \big| U_p$ to ensure that this symbol is in the image of $\MSo{\Dkrig^0}$ (as opposed to $\MSo{\Dkoc}$).  Then find $r$ such that  $p^r \Phi$ is in $Y_{\varphi,M}$. By section \ref{sec:iter}, there is a well-defined operator $\lambda^{-1} U_p$ acting on $Y_{\varphi,M}$ which can be explicitly computed by Remark \ref{rmk:iter}.  If $h < k+1$, iterate this operator on $\Phi$ until the result stabilizes (which is guaranteed to happen by Theorem \ref{thm:comparison}).
+If $h = k+1$, apply the operator $\lambda^{-1} U_p$ to $\Phi$ many times.\footnote{In all examples we tried, $M$ applications of $\lambda^{-1} U_p$ sufficed.  However, in general this need not be the case.  Indeed, if some ``eigencomponent" of $\Phi$ had slope between $k+1$ and $k+2$ more applications of this operator would be needed.   If the following step fails to produce an eigensymbol, return to this step and iterate $\lambda^{-1} U_p$ more times.}
+
+\vspace{.2cm}
+
+\noindent
+5) {\it Form the Hecke-eigensymbol:}  If $h<k+1$, the stable symbol of the proceeding step is the sought after Hecke-eigensymbol.
+If $h=k+1$, consider $\Psi = \Phi - \lambda^{-1} \Phi \big| U_p$ which is in the kernel of $\olsp$.  Since $\Psi$ has finite slope, its Hecke-span has dimension independent of $M$, and thus can be considered small relative to $M$.  By linear algebra, find a polynomial $g(T) \in \Z[T]$ of small degree such that $\Psi \big| g(U_p) = 0$.  Then $\Phi' := \Phi \big| g(U_p)$ is a $\lambda$-eigensymbol for $U_p$.
+
+
+The symbol $\Phi'$ need not be a Hecke-eigensymbol for the full Hecke-algebra.  To remedy this, consider a prime $\ell \neq p$, and let $\Psi_\ell = \Phi' - a_\ell \Phi' \big| T_\ell$.  Then repeat the above procedure to annihilate $\Psi_\ell$.  Repeat this process for other primes until one arrives at an eigensymbol for the whole Hecke-algebra.  
+
+\vspace{.2cm}
+
+\begin{remark}
+~
+\begin{enumerate}
+
+\item In practice, the vast majority of time needed to carry out the above algorithm is taken up by the projection of $\Phi$ to the slope $h$ subspace.  
+
+\item The constructed eigensymbol specializes to some multiple of $\varphi_f$.  However, as explained in Remark \ref{rmk:LA}, this multiple might be zero.  In the notation of the above algorithm, when one is killing off $\Psi$ (resp.\ $\Psi_\ell$), it is possible that $f(\lambda)$ (resp.\ $f(a_\ell)$) vanishes.  Applying $f(U_p)$ (resp.\ $f(T_\ell)$) will then cause the resulting symbol to specialize to zero.
+\end{enumerate}
+\end{remark}
+
+\subsection{Examples of critical slope overconvergent modular symbols}
+\label{sec:exs}
+Using the algorithms described in the previous section, we numerically
+explored the slope one subspace of $\MSo{\Dkrig}$ with $k=0$ and
+$\Gamma_0 = \Gamma_0(Np)$, for various values of $N$ and $p$.  (These computation were carried out in MAGMA \cite{MAGMA} on William Stein's MECCAH cluster.)
+
+
+\begin{ex}[$N=11$ and $p=3$]
+For $\Gamma_0 = \Gamma_0(33)$, the slope one subspace of $\MSo{\Q_3}$ is three-dimensional.  Indeed, let $f = \sum_n a_n q^n$ be the modular form corresponding to the elliptic curve $X_0(11)$.  If $\alpha$ and $\beta$ are the two roots of $x^2-a_3x+3$, we can order them so that 
+$$
+0 = \ord_p(\alpha) < \ord_p(\beta) = 1.
+$$
+(Note that $X_0(11)$ is ordinary at $3$, and thus $a_3$ is a $3$-adic unit.)  By $p$-stabilizing, we see that there are two modular forms $f_\alpha$ and $f_\beta$ of level $33$ with the same eigenvalues as $f$ away from $3$, and at $3$ we have
+$$
+f_\alpha | U_3 = \alpha f_\alpha \text{~~and~~}
+f_\beta | U_3 = \beta f_\beta.
+$$
+So the eigenform $f_\beta$ is of slope one, and thus gives rise to two modular symbols $\varphi_\beta^\pm \in \MSo{\Q_3}^\pm$ such that 
+$$
+\varphi_\beta^\pm \big| T_\ell = a_\ell \cdot \varphi_\beta^\pm, \hspace{.3cm}
+\varphi_\beta^\pm \big| U_{11} =  \varphi_\beta^\pm, \hspace{.3cm}
+\text{and} \hspace{.3cm}
+\varphi_\beta^\pm \big| U_3 = \beta \cdot \varphi_\beta^\pm.
+$$
+The third dimension of $\MSo{\Q_3}^{(=1)}$ comes from a critical slope Eisenstein symbol.  That is, there is a symbol $\varphi_{eis} \in \MSo{\Q_3}^+$ such that
+$$
+\varphi_{eis} \big| T_\ell = (\ell + 1) \cdot \varphi_{eis}, \hspace{.3cm}
+\varphi_{eis} \big| U_{11} = \varphi_{eis}, \hspace{.3cm}
+\text{and} \hspace{.3cm}
+\varphi_{eis} \big| U_3 = 3 \cdot \varphi_{eis}.
+$$
+
+The hypotheses of Theorem \ref{thm:criticalslope} are met for the modular form $f_\beta$.  We are therefore guaranteed that there exists an overconvergent Hecke-eigensymbol $\Phi_\beta^\pm$ lifting $\varphi_\beta^\pm$. Numerically, we were able to find this symbol (for both choices of sign) in $\MSo{\FkM}$ for $M$ around $100$.  We also found a Hecke-eigensymbol $\Phi_{eis}^+$ in $\MSo{\FkM}^+$ which specializes to $\varphi_{eis}$.  
+
+These three lifts do not account for all of the symbols in the slope one subspace of $\MSo{\FkM}$. The second author and Vincent Pasol further analyzed the kernel of specialization, and identified a three-dimensional subspace of eigensymbols.  Namely, there was a symbol $\Phi_{eis}^-$ in $\MSo{\FkM}^-$ such that $\sp(\Phi_{eis}) = 0$ and such that
+$$
+\Phi_{eis}^- \big| T_\ell  = (\ell + 1)  \cdot \Phi_{eis}^-, \hspace{.3cm}
+\Phi_{eis}^- \big| U_{11} = \Phi_{eis}^-, \hspace{.3cm}
+\text{and} \hspace{.3cm}
+\Phi_{eis}^- \big| U_3 = 3 \cdot \Phi_{eis}^-.
+$$
+
+There were also two slope one Hecke-eigensymbols in the kernel of specialization whose eigenvalues appeared to lie in a degree two extension of $\Q_3$.  For example, the characteristic polynomial of $U_3$ acting on the span of these two symbols was congruent to 
+$$
+x^2+6501x+4248 \pmod{3^8}.
+$$ 
+The roots of this polynomial are defined over $\Q_3(\sqrt{-3})$.
+
+The presence of these last two symbols can be explained by Hida theory.  First note that the Hida algebra of tame level $\Gamma_0(11)$ with $p=3$ has rank $2$ over weight space. (There are exact two $p$-ordinary forms on $\Gamma_0(33)$, and they are congruent mod $p$.)
+Specializing the Hida algebra to weight 0 (i.e.\ $k=-2$) yields a two-dimensional space of overconvergent modular forms of weight $0$ and level $33$.  
+The image under the $p$-adic theta operator of this two-dimensional space corresponds to the above two-dimensional space found in the kernel of specialization.\footnote{Note that the above observations imply that this Hida algebra cannot be free over $\Lambda$ as both eigenforms of level $33$ and weight $2$ have Fourier coefficients in $\Zp$, while the corresponding eigenforms in weight $0$ have Fourier coefficients in a quadratic extension of $\Zp$.  See \cite{GS2} for more details on this example.}
+\end{ex}
+
+\begin{ex}[$N=11$ and $p=5$]
+
+In this case, the slope one subspace of $\MSo{\Qp}$ is again three-dimensional with one dimension coming from an Eisenstein symbol and the other two dimensions coming from the slope one $5$-stabilization of the modular form attached to $X_0(11)$.  We point out this example in particular because $X_0(11)$ has rational $5$-torsion, and thus its associated modular form is congruent to an Eisenstein series mod $5$.  In particular, the residual representation associated to this modular form is reducible.
+
+Numerically, we again found Hecke-eigensymbols lifting all three of these symbols in $\MSo{\FkM}$.   Note that the standard $5$-adic $L$-function of $X_0(11)$ has a positive $\mu$-invariant.  We will see that this seems to have a profound affect on the zeroes of the $5$-adic $L$-function of the corresponding slope one form.
+\end{ex}
+
+\begin{ex}[$N=32$ and $p=5$]
+Again the slope one subspace of $\MSo{\Qp}$ is three-dimensional with one dimension coming from an Eisenstein symbol and the other two dimensions coming from the $5$-stabilization of the modular form attached to the elliptic curve  $X_0(32)$.  In this case, the critical slope eigenform arising from this elliptic curve does not satisfy the hypotheses of Theorem \ref{thm:criticalslope}.  Indeed, as $X_0(32)$ has CM, \cite[Proposition 7.1]{Coleman} implies that this eigenform is in the image of the $p$-adic theta operator.
+
+Unlike the previous examples, we were not able to find a Hecke-eigensymbol in $\MSo{\FkM}$ lifting the classical symbol arising from this CM curve. However, numerically, we found a Hecke-eigensymbol in $\MSo{\FkM}^\pm$ with the same eigenvalues as the classical symbol, but whose specialization was zero.  Furthermore, it appeared that up to scaling and choice of sign, there was a unique Hecke-eigensymbol in $\MSo{\FkM}^\pm$ with these eigenvalues.  If this observation is true, one could define the $p$-adic $L$-function of this slope one cuspform to be the value of this symbol at $\{\infty\} - \{0\}$.  However, such a $p$-adic $L$-function would not interpolate special values of $L$-series since by construction it vanishes at all finite order characters.
+\end{ex}
+
+
+
+\section{$p$-adic $L$-functions and Data}
+\label{sec:pL}
+
+
+By Proposition \ref{prop:OMStoPL}, the $p$-adic $L$-function of a modular form $f$ is given by  $\mu_f := \Phi_f(\{\infty\} - \{0\})$ where $\Phi_f$ is the overconvergent modular symbol lifting $\varphi_f^+ + \varphi^-$.  The results of the proceeding section give an algorithm to compute $\Phi_f$ and thus $\mu_f$.  In this section, we describe how to get a handle on the zeroes of such a distribution and, at the end, we give examples of the zeroes of several critical slope $p$-adic $L$-functions.
+
+\subsection{Power series representations of distributions}
+
+Let $\mu \in \D(\Zpx)$ be any locally analytic distribution on $\Zpx$.  By integrating, we can view $\mu$ as a function on $\Hom_{cont}(\Zpx,\Cpx)$.  Since $\Zpx \cong (\Z/p\Z)^\times \times (1+p\Zp)$, by choosing a topological generator $\gamma$ of $1+p\Zp$, we can identify $\Hom_{cont}(\Zpx,\Cpx)$ with $p-1$ copies of the open unit disc around $0$ each indexed by a character of $(\Z/p\Z)^\times$.  Concretely, for $\psi$ a character of $(\Z/p\Z)^\times$ and $w$ in the open unit disc around $0$, we have a character $\chi_{\psi,w}$ on $\Zpx$ defined by
+$$
+\chi_{\psi,w}(z) = \psi(z) \cdot (w+1)^{\log_\gamma \langle z \rangle}
+$$
+where $\langle \cdot \rangle$ is the projection of $\Zpx$ onto $1+p\Zp$ and $\log_\gamma(z) = \frac{\log_p(z)}{\log_p(\gamma)}$ for $z$ a 1-unit.
+
+Thus, for each fixed character $\psi$, $\mu$ gives rise to a function on the open unit disc.  If we write this function as $L_p(\mu,\psi,w)$, then 
+\begin{align*}
+L_p(\mu,\psi,w) 
+&= \int_{\Zpx} \chi_{\psi,w}(z) ~d \mu(z) 
+= \int_{\Zpx}  \psi(z) \cdot (w+1)^{\log_\gamma \langle z \rangle} ~d \mu(z) \\
+&= \int_{\Zpx} \psi(z) \left( \sum_{n \geq 0} \binom{\log_\gamma \langle z \rangle}{n} w^n \right) ~d \mu(z)  \\
+&= \sum_{n \geq 0}  \left( \int_{\Zpx} \psi(z)   \binom{\log_\gamma \langle z \rangle}{n} ~d \mu(z) \right) w^n   
+\end{align*}
+Thus, $L_p(\mu,\psi,w)$ is in fact a rigid analytic function on the open unit disc (in the variable $w$).  
+
+\subsection{Distributions arising from modular symbols}
+
+Let $\Phi$ be an overconvergent $U_p$-eigensymbol in $\MSo{\Dkla}$ with eigenvalue $\lambda$, and let $\mu$ denote the restriction of $\Phi(\{ \infty \} - \{ 0 \})$ to $\Zpx$.
+We now discuss how to compute the coefficients of $L_p(\mu,\psi,w)$ in terms of the modular symbol $\Phi$. 
+
+From the proceeding section, we have that the $n$-th coefficient of $L_p(\mu,\psi,w)$ is
+\begin{align*}
+\int_{\Zpx} \psi(z)   \binom{\log_\gamma \langle z \rangle}{n} ~d \mu(z)
+&= \sum_{a=1}^{p-1} \psi(a) \int_{a+p\Zp} \binom{\log_\gamma\left(z \cdot \{a\}^{-1}\right)}{n} ~d \mu.
+\end{align*}
+Since 
+$$
+\log_\gamma\left(z \cdot \{a\}^{-1}\right) = \frac{1}{\log_p(\gamma)} \cdot \sum_{j \geq 1} \frac{(-1)^{j+1}}{j} \left(   \frac{z}{\{a\}} -1  \right)^j,
+$$
+we have that
+$$
+\binom{\log_\gamma\left(z \cdot \{a\}^{-1}\right)}{n} = \sum_{j \geq 1} c_j^{(n)} \left(   \frac{z}{\{a\}} -1  \right)^j
+$$
+for some elements $c_j^{(n)} \in \Qp$.  In particular, the $n$-th coefficient of $L_p(\mu,\psi,w)$ equals
+\begin{equation}
+\label{eqn:coef}
+\sum_{j \geq 1} c_j^{(n)} \left( \sum_{a=1}^{p-1} ~\psi(a) \{a\}^{-j} \int_{a+p\Zp} \left(z - \{a\} \right)^j ~d\mu \right).
+\end{equation}
+
+To compute these integrals on $a+p\Zp$, note that since $\Phi$ is a $U_p$-eigensymbol, we have that
+$$
+\Phi = \frac{1}{\lambda} \Phi \big| U_p = \frac{1}{\lambda} \sum_{a=0}^{p-1} \Phi \big| \psmallmat{1}{a}{0}{p}.
+$$
+For any distribution $\nu \in \Dla$, $\nu \big| \psmallmat{1}{a}{0}{p}$ has support inside of $a+p\Zp$.  Thus,
+\begin{align*}
+\int_{a+p\Zp} (z-\{a\})^j ~d\mu 
+&= \Phi(D_\infty) \left( {\bf 1}_{a+p\Zp}(z) \cdot (z - \{a\})^j   \right) \\
+&= \frac{1}{\lambda} \left( \left(\Phi \big| \psmallmat{1}{a}{0}{p}\right)\left(D_\infty\right) \right)\left( {\bf 1}_{a+p\Zp}(z) \cdot (z - \{a\})^j   \right) \\
+&= \frac{1}{\lambda}  \Phi(D_{a})\left( (a - \{a\}) + pz)^j   \right) \\
+&= \frac{1}{\lambda} \sum_{r=0}^j \binom{j}{r} (a-\{a\})^{j-r} p^r \cdot \Phi(D_{a})(z^r)
+\end{align*}
+where $D_{a} = \{\frac{a}{p}\} - \{\infty\}$.  
+This last expression is simply a linear combination of the moments of $\Phi(D_{a})$.   Thus, we have succeeded in expressing the power series $L_p(\mu,\psi,w)$ in terms of the symbol $\Phi$.
+
+In practice, the values $\Phi(D_{a})(z^r)$ are easy to compute once the symbol $\Phi$ is known.  Indeed, one uses Manin's continued fraction algorithm to express $\Phi(D_{a})$ is terms of the values of $\Phi$ on our generating set of divisors.  Moreover, these distributions are simply stored by their sequence of moments.
+
+Another practical point to consider is how many terms in (\ref{eqn:coef}) one needs to sum to achieve a desired level of accuracy.  To answer this, note that 
+$$
+p^{j-\ord_p(\lambda)} \hspace{.2cm} \text{~~divides~~}
+\hspace{.2cm}  \int_{a+p\Zp} (z-\{a\})^j ~d\mu
+$$ 
+as is seen from the above computation since $a$ and $\{a\}$ are congruent mod $p$.  The constants $c_j^{(n)}$ are independent of $\Phi$, and their $p$-adic valuations are easily computed.  Thus, one can bound the size of the tail-end of the series in (\ref{eqn:coef}) to make an appropriate error estimate.
+
+Using these error estimates, one could then add up enough terms to ensure that the coefficients of the approximation have the same $p$-adic valuation as the coefficients of $L_p(f,\lambda,\psi,w)$.  Knowing these $p$-adic valuations, one can then compute the newton polygon of these power series, and thus the slopes of their zeroes.
+
+\subsection{Twists}
+
+Let $\Phi$ be an overconvergent modular symbol for the group $\Gamma_0(Np)$, and let $\chi$ be some quadratic character of conductor $m$ with $p \nmid m$. Define a new symbol by 
+$$
+\Phi_\chi = \sum_{b~(\text{mod}~m)} \chi(b) \cdot \Phi ~\Big| \psmallmat{1}{b/m}{0}{1}
+$$
+which is invariant under the group $\Gamma_0(Npm^2)$ (and possibly invariant under a larger group if $(N,m) \neq 1$).
+
+If $\Phi$ is a $U_p$-eigensymbol with eigenvalue $\lambda$, one has that $\Phi_\chi$ is a $U_p$-eigensymbol with eigenvalue $\chi(p) \lambda$.  In particular, 
+$$
+\mu_\chi := \Phi_\chi(\{\infty\} - \{0\}) = \sum_{b~(\text{mod}~m)} \chi(b) \cdot \Phi\left(\left\{b/m\right\} - \left\{\infty\right\} \right) \Big| \psmallmat{1}{b/m}{0}{1}.
+$$
+Thus, the power series $L_p(\mu_\chi, \psi,w)$ is computable using the formulae of the previous section.
+
+\subsection{Data of critical slope $p$-adic $L$-functions}
+\label{sec:data}
+
+Using the methods described in the previous sections, we computed the newton polygons of the critical slope $p$-adic $L$-functions attached to $X_0(11)$ for $p=3,5$, $X_0(14)$ for $p=3$ and $X_0(32)$ for $p=3$. Moreover, we did the same computation for quadratic twists with conductor of size less than $200$.  
+
+We begin by analyzing the data for $X_0(11)$ and $p=3$.  The following table lists the slopes of the zeroes of the critical slope $p$-adic $L$-function twisted by quadratic characters of conductor $D$.  (Here, and in the remainder of the section, we are fixing our tame character $\psi$ to be trivial.)
+
+\renewcommand{\arraystretch}{1.4}
+
+\vspace{.2cm}
+
+\begin{center}
+\begin{tabular}{|c|r|}
+\hline
+$D$ &   zeroes and their slopes  \\
+\hline
+1 &
+6 of slope $\frac{1}{3}$, 12  of slope $\frac{1}{12}$, 36  of slope $\frac{1}{36}$, $\dots$ \\
+\hline
+5 &
+2  of slope $\frac{1}{2}$, 6  of slope $\frac{1}{6}$, 14  of slope $\frac{1}{14}$, 36  of slope $\frac{1}{36}$, $\dots$ \\
+\hline
+8 &
+1  of slope $\infty$, 2  of slope $\frac{1}{2}$, 4  of slope $\frac{1}{4}$, 12  of slope $\frac{1}{12}$, 36  of slope $\frac{1}{36}$, $\dots$ \\
+\hline
+13 &
+1  of slope $\infty$, 2  of slope $\frac{1}{2}$, 4  of slope $\frac{1}{4}$, 12  of slope $\frac{1}{12}$, 36  of slope $\frac{1}{36}$, $\dots$ \\
+\hline
+17 & 1  of slope $\infty$, 6  of slope $\frac{1}{3}$, 12  of slope $\frac{1}{12}$, 36  of slope $\frac{1}{36}$, $\dots$  \\
+\hline
+28 & 1  of slope $\infty$, 2 of slope $\frac{1}{2}$, 6  of slope $\frac{1}{3}$, 16  of slope $\frac{1}{16}$, 36  of slope $\frac{1}{36}$, $\dots$  \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{.2cm}
+
+Note that in each example the zeroes of larger slope behave erratically while the ones of smaller slope begin to settle down.  Indeed, all of these $p$-adic $L$-functions have 36 zeroes of slope $\frac{1}{36}$ and, in fact, each also had $108$ zeroes of slope $\frac{1}{108}$. 
+
+Since the slopes of the zeroes close enough to the boundary appear to be stabilizing, it makes sense to ask how many ``extra" zeroes there are of large slope.  The following table gives a running total of the number of zeroes of each $p$-adic $L$-function as we take larger and larger discs about the origin inside of the unit disc.  Each time there is a break in the newton polygon, we include the new tally of zeroes in the table.  The last column is the difference between the total number of zeroes and smallest total number of zeroes appearing in the table.
+
+\vspace{.2cm}
+
+\begin{center}
+\begin{tabular}{|l|r||c|}
+\hline
+D & number of zeroes & ``extra"\\ 
+&in expanding discs & zeroes\\
+\hline
+1 & 6,~18,~54,~162 & 0 \\
+\hline
+5 & 2,~8,~22,~58,~166 & 4\\
+\hline
+8 & 1,~3,~7,~19,~55,~163 & 1\\
+\hline
+13 & 1,~3,~7,~19,~55,~163 & 1\\
+\hline
+17 & 1,~7,~19,~55,~163 & 1\\
+\hline
+28 & 1,~3,~9,~25,~61,~169 & 7\\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{.2cm}
+
+It is natural to guess that these extra zeroes are somehow related to the ordinary $p$-adic $L$-function attached to these curves.  Indeed, in each of these examples, the number of extra zeroes is exactly equal to the $\lambda$-invariant (i.e.\ the number of zeroes) of the $p$-adic $L$-function of the ordinary $p$-stabilization of this curve.\footnote{See \cite{PollackData} for data on the Iwasawa invariants of ordinary $p$-adic $L$-functions.}
+
+Moreover, this pattern repeated itself for all twists with $-200 < D < 200$ and $D$ prime to $3$.  Precisely, we found that if $r_n = (p^{n}(p-1))^{-1}$, the number of zeroes in the open disc of radius $p^{-r_n}$ equaled
+\begin{equation}
+\label{eqn:zeroes}
+p^{n-1} (p-1) + \lambda_D
+\end{equation}
+for $n$ large enough (i.e.\ $n \geq 3$) where $\lambda_D$ is the $\lambda$-invariant of the ordinary $p$-adic $L$-function of $X_0(11)$ twisted by the quadratic character of conductor $D$. 
+
+We repeated this experiment for $X_0(14)$ with $p=3$ for discriminants between $-200$ and $200$.  We found the same results with the number of zeroes in increasing discs being given by (\ref{eqn:zeroes}).
+
+In repeating the experiment for $X_0(11)$ with $p=5$, we observed something new.  When twisting by characters with negative discriminants we observed the same behavior as described by (\ref{eqn:zeroes}).  However, when twisting by characters with positive discriminants, the behavior was remarkably different.  The following table illustrates this.
+
+\vspace{.2cm}
+
+\begin{center}
+\begin{tabular}{|c|r|}
+\hline
+$D$ & zeroes and their slopes\\
+\hline
+1 &
+4 of slope $\frac{1}{4}$, 20  of slope $\frac{1}{20}$, 100  of slope $\frac{1}{100}$, \dots \\
+\hline
+8 &
+1  of slope $\infty$, 4  of slope $\frac{1}{4}$, 20  of slope $\frac{1}{20}$, 100  of slope $\frac{1}{100}$, \dots \\
+\hline
+12 &
+2 of slope $1$, 4 of slope $\frac{1}{4}$, 20  of slope $\frac{1}{20}$, 100  of slope $\frac{1}{100}$, \dots \\
+\hline
+13 &
+1  of slope $\infty$, 4  of slope $\frac{1}{4}$, 20  of slope $\frac{1}{20}$, 100  of slope $\frac{1}{100}$, \dots\\
+\hline
+17 &
+1  of slope $\infty$, 4  of slope $\frac{1}{4}$, 20  of slope $\frac{1}{20}$, 100  of slope $\frac{1}{100}$, \dots \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{.2cm}
+
+In this case, the pattern of $4$ zeroes of slope $\frac{1}{4}$, $20$ zeroes of slope $\frac{1}{20}$ and $100$ zeroes of slope $\frac{1}{100}$ appear in every example.  Note that the zeroes of the $p$-adic log have the same slopes as those appearing in this table.  However, it is not possible that the $p$-adic logarithm divides these $p$-adic $L$-functions because of their interpolation property.  Such a divisibility would translate into the vanishing at $1$ of the associated complex $L$-series twisted by any character of $p$-power order and conductor, which violates a theorem of Rohrlich \cite{Rohrlich}.
+	
+From the data collected for all real quadratic twists of conductor less than 200, we observed that the number of zeroes of these twisted $p$-adic $L$-functions in the open disc of radius $p^{-r_n}$ equals
+$$
+p^n - 1+ \epsilon_D
+$$
+where $\epsilon_D$ is some non-negative integer.  At present, we have no interpretation of the constants $\epsilon_D$.  
+
+However, we have a guess as to why the behavior in this example is different from the previous ones.  The curve $X_0(11)$ at $p=5$ has a non-zero $\mu$-invariant.  This is also true of any real quadratic twist \cite[Theorem 1.3]{GV}, but not true of any imaginary quadratic twist \cite[Proposition 5.7]{G-CIME}.  Moreover, the previous examples with $p=3$ all conjecturally have zero $\mu$-invariant.  It thus appears that the non-vanishing of $\mu$ of an ordinary $p$-adic $L$-function has an affect on the zeroes of the associated critical slope $p$-adic $L$-function.
+
+Our last examples comes from the $X_0(32)$ with $p=5$.  This example is fundamentally different from the proceeding ones since the corresponding critical slope eigensymbol appears to be in the kernel of specialization.  Thus, the associated power series of its $p$-adic $L$-function vanishes at $\zeta_n-1$ for all $n$, where $\zeta_n$ is a primitive $p^n$-th root of unity.  In particular, these $p$-adic $L$-functions are divisible by the $p$-adic log.  We must then have that the number of zeroes of twists of this $p$-adic $L$-functions in the open disc of radius $p^{-r_n}$ equals
+$$
+p^n + \epsilon_D.
+$$
+
+Since these $p$-adic $L$-functions are divisible by $\log_p$ and are $\OO(\log_p)$, it is natural to consider their quotient which is an Iwasawa function (up to a power of $p$).  Our first guess as to what this Iwasawa function could be was the $p$-adic $L$-function attached to the ordinary $p$-stabilization of this curve.  However, this is not the case since $\epsilon_D \neq \lambda_D$ for many values of $D$.  At present, we again have no interpretation of the constants $\epsilon_D$.
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{AV}
+Y.\ Amice and J.\ V\'elu, \emph{Distributions $p$-adiques associ\'ees aux s\'eries de Hecke.} (French), in Journ\'ees Arithm\'etiques de Bordeaux  (Conf., Univ.\ Bordeaux, Bordeaux, 1974), 119--131. Ast\'erisque, Nos.\ 24-25, Soc.\ Math.\ France, Paris, 1975.
+
+\bibitem{AshStevens86}
+Avner Ash and Glenn Stevens,
+\emph{Modular forms in characteristic $\ell$ and special values of their $L$-functions},  Duke Math.\ J.\ 53 (1986), no.\ 3, 849--868. 
+
+\bibitem{MAGMA}
+Wieb Bosma, John Cannon, and Catherine Playoust, \emph{The Magma algebra system.\ I.\ The user language}, J.\ Symbolic Comput.\, 24(3-4):235-265, 1997.
+
+\bibitem{Coleman} Robert Coleman, 
+\emph{Classical and overconvergent modular forms},
+Invent. Math., 124 (1996), no.~1-3, 215--241. 
+
+\bibitem{D} Henri Darmon, 
+\emph{Integration on $\H_p \times \H$ and arithmetic applications},
+Annals of Mathematics, {\bf 154}, (2001) 589-639.
+
+\bibitem{DP} Henri Darmon and Robert Pollack,  \emph{The efficient calculation of Stark-Heegner points via overconvergent modular symbols},   Israel Journal of Math., 153 (2006), 319--354.
+
+\bibitem{MG} Matthew Greenberg,
+\emph{Lifting modular symbols of noncritical slope}, to appear in Israel J. Math. 
+
+\bibitem{G-CIME}  Ralph Greenberg,
+ \emph{Iwasawa theory for elliptic curves}, Arithmetic theory of
+  elliptic curves (Cetraro, 1997), Lecture Notes in Math., vol. 1716, Springer,  Berlin, 1999, pp.~51--144.
+
+\bibitem{GS2}  Ralph Greenberg and Glenn Stevens, 
+\emph{On the conjecture of Mazur, Tate, and Teitelbaum},  $p$-adic monodromy and the Birch and Swinnerton-Dyer conjecture, (Boston, MA, 1991),  183--211,
+Contemp. Math., 165, Amer. Math. Soc., Providence, RI, 1994. 
+
+\bibitem{GV}
+Ralph Greenberg and Vinayak Vatsal, \emph{On the {I}wasawa invariants of elliptic curves}, Invent. Math. \textbf{142} (2000), no.~1, 17--63.
+
+\bibitem{Gross}
+Benedict Gross, \emph{A tameness criterion for {G}alois representations  associated to modular forms (mod {$p$})}, Duke Math.\ J.\ \textbf{61} (1990), no.~2, 445--517.
+
+\bibitem{KP}
+Masato Kurihara and Robert Pollack, \emph{Two $p$-adic $L$-functions and rational points on elliptic curves with supersingular reduction},      $L$-Functions and Galois Representations (Durham, 2007), 300--332, London Math Society LNS 320.
+
+\bibitem{Manin}
+Yuri Manin, \emph{Parabolic points and zeta functions of modular curves},  Izv.\ Akad.\ Nauk SSSR Ser.\ Mat.\ {\bf 36} (1972), 19--66.
+
+\bibitem{MTT}
+Barry Mazur, John Tate and Jeremy Teitelbaum, 
+\emph{On $p$-adic analogues of the conjectures of Birch and Swinnerton-Dyer}, Invent.\ Math.\ {\bf 84} (1986), 
+no.~1, 1--48.
+
+\bibitem{PP}
+David Pollack and Robert Pollack,
+\emph{A construction of rigid analytic cohomology classes for congruence subgroups of $\SL_3(\Z)$},  to appear in the Canadian Journal of Mathematics.
+
+\bibitem{PollackData}
+Robert Pollack, \emph{Tables of Iwasawa Invariants of Elliptic curves}, \\ {\tt http://math.bu.edu/people/rpollack/Data/data.html}. 
+
+\bibitem{PS}
+Robert Pollack and Glenn Stevens, \emph{Critical slope $p$-adic $L$-function}, preprint -- available at {\tt http://math.bu.edu/people/rpollack/Papers/Critical\_slope\_padic\_Lfunctions.pdf}.
+
+\bibitem{Rohrlich}
+David Rohrlich, \emph{On $L$-functions of elliptic curves and cyclotomic towers}, Invent. Math. {\bf 75} (1984), no.~3, 409--423.
+
+\bibitem{Serre} 
+John-Pierre Serre,
+{\it Endomorphismes compl\'etement continus des espaces de Banach  $p$-adiques}, 
+Inst. Hautes \'Etudes Sci.\ Publ.\ Math., No.~12, 1962, 69--85. 
+
+\bibitem{Stevens} Glenn Stevens, \emph{Rigid analytic modular symbols}, preprint.
+
+\bibitem{Stevens2}
+Glenn Stevens, \emph{Families of overconvergent modular symbols}, preprint.
+
+\bibitem{Mak}
+Mak Trifkovi\'c, \emph{Stark-Heegner points on elliptic curves defined over imaginary quadratic fields},  Duke Math.\ J.,  {\bf 135}  (2006),  no.\ 3, 415--453.
+
+\bibitem{Visik}
+M.\ Vi\v sik, \emph{Nonarchimedean measures associated with Dirichlet series},  Mat.\ Sb.\ (N.S.) {\bf 99 (141)}, (1976), no.~2, 248--260.
+
+\end{thebibliography}
+
+
+\end{document}
+
+

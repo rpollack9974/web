@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>Tables of Iwasawa invariants of elliptic curves</TITLE>
+</HEAD>
+<BODY>
+<H2>Tables of Iwasawa invariants of elliptic curves</H2>
+<HR>
+All computations have been done using MAGMA on William Stein's
+modular cluster.
+<hr>
+There are still some bugs in the programs computing this
+data -- so user beware!
+<hr>
+
+On this website are tables of Iwasawa invariants of elliptic
+curves (currently being computed).  Specifically, for each curve
+(labeled as in Cremona) the mu and lambda-invariants are listed
+for the primes between 2 and 13.  <p>
+The data is formatted in 9 columns.
+The first column records the curve's name.  The second column
+records the rank.  The remaining seven columns are devoted to the 
+primes 2,3,5,7,11, and 13.  In each column there are three numbers
+<p>
+ &nbsp mu &nbsp lambda &nbsp lambda<sub>MW</sub>
+<p>
+where lambda_MW is the Mordell-Weil part of the lambda invariant. <br>
+-if the curve has supersingular reduction at p then the plus/minus
+invariants are listed with the plus invariants on top of the minus 
+invariants. <br>
+-if the curve has split multiplicative reduction, a trivial
+zero is expected and in such cases a "*" follows the three invariants. 
+<br>
+-if the curve has additive reduction at p then no invariants are
+listed. <br>
+-this program will not detect higher order zeroes of the L-function.
+So both the rank and lambda<sub>MW</sub> should be
+taken as lower bounds.  In particular rank 2 curves are listed as rank 1.
+<P>
+<a href="curves1-5000">
+Tables of invariants </a>  <br>
+
+<hr>
+
+The following tables contain the Iwasawa invariants of quadratic twists
+of curves of low conductor for p=2,3,5 and 7.  The format is similar
+to the preceeding tables -- here the first column is the discriminant
+of the twist.
+<p>
+<a href="curves1-100.html">
+Quadratic twists: conductor 1-100 </a>  <br>
+
+<hr>
+
+The following table computes the lambda and mu invariants for
+37A with p varying from 3 onward.  The format of the data is <p>
+
+p &nbsp | &nbsp mu &nbsp lambda &nbsp lambda<sub>MW</sub>
+<p>
+-if the curve has supersingular reduction at p then 
+the plus/minus invariants are listed side-by-side with the
+plus invariants first.
+<p>
+<a href="37A.p">
+37A with varying p </a>  <br>
+<hr>
