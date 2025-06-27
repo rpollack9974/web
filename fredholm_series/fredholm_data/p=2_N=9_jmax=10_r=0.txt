@@ -1,0 +1,86 @@
+cusp
+ p=2, N=9, j_max=10, r=0
+
+Trace of U_p^j data:
+0:
+	 mu = +Infinity
+	 lm = 0
+	 slopes:[]
+1:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+2:
+	 mu = 2
+	 lm = 0
+	 slopes:[]
+3:
+	 mu = 1
+	 lm = 1
+	 slopes:[2]
+4:
+	 mu = 2
+	 lm = 4
+	 slopes:[1/2, 1/2, 1/2, 1/2]
+5:
+	 mu = 1
+	 lm = 2
+	 slopes:[2, 2]
+6:
+	 mu = 2
+	 lm = 2
+	 slopes:[2, 2]
+7:
+	 mu = 1
+	 lm = 3
+	 slopes:[2, 2, 2]
+8:
+	 mu = 2
+	 lm = 8
+	 slopes:[5/4, 5/4, 5/4, 5/4, 1/4, 1/4, 1/4, 1/4]
+9:
+	 mu = 1
+	 lm = 4
+	 slopes:[2, 2, 2, 2]
+
+Coefficient data:
+0:
+	 mu = +Infinity
+	 lm = 0
+	 slopes:[]
+1:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+2:
+	 mu = 2
+	 lm = 0
+	 slopes:[]
+3:
+	 mu = 1
+	 lm = 1
+	 slopes:[2]
+4:
+	 mu = 0
+	 lm = 4
+	 slopes:[2, 2, 1/2, 1/2]
+5:
+	 mu = 1
+	 lm = 2
+	 slopes:[3, 2]
+6:
+	 mu = 2
+	 lm = 2
+	 slopes:[4, 3]
+7:
+	 mu = 1
+	 lm = 3
+	 slopes:[4, 4, 3]
+8:
+	 mu = 0
+	 lm = 4
+	 slopes:[4, 4, 4, 3]
+9:
+	 mu = 1
+	 lm = 7
+	 slopes:[11/3, 11/3, 11/3, 3, 2, 1/2, 1/2]

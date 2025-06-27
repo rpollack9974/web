@@ -1,0 +1,82 @@
+<HTML> <HEAD> 
+<TITLE>
+Fredholm series for the U_p operator
+</TITLE> 
+</HEAD> <BODY> 
+<H2>Slopes of modular forms</H2>
+<HR>
+
+<H3>Fredholm series for
+U<sub>p</sub> (data and code)</H3>
+
+We implement a formula for the characteristic series of U<sub>p</sub> acting on 
+spaces of overconvergent cuspforms as a two-variable power series over the 
+p-adic integers. We used this implementation to produce the examples in 
+the paper "Arithmetic properties of Fredholm series for p-adic modular 
+forms". A README is included describing those examples. Also included is a 
+pre-computed sage object containing the first 20 (!) coefficients of the 
+characteristic series U<sub>2</sub> acting in tame level one.
+
+<p>
+
+<a href=koike.zip>Code here</a>
+
+<HR>
+
+<H3>Ghost series</H3>
+
+<b>Code</b>: The below SAGE code allows one to compute the ghost series, ghost 
+slopes at all weights (even in characteristic p) and to draw 
+pictures of the ghost spectral halo.  The top of the code contains a brief explanation of the main functions and how 
+they are used.
+
+<p>
+
+<a href=ghost.py>SAGE code here</a>
+<p>
+
+<b>Code</b>: The below SAGE code allows one to compute with abstract ghost series and in particular 
+with ghost series attached to a fixed mod p representation.  See the sample run for an explicit 
+example.
+
+<p>
+
+<a href=ghost_abstract.zip>Code here</a>
+<p>
+
+<b>Ghost zeroes vs. true zeros</b>: The below pdf files give tables 
+which compare the 
+location of the true zeroes of coefficients of the Fredholm series of 
+U<sub>p</sub> to that of the ghost zeroes.  From these tables one can 
+see how strikely close the zeroes match.  Further, the multiplicity
+pattern of the ghost zeroes is explained by this data.
+<p>
+<a href=ghost_checks_p=2N=1.pdf>p=2 and N=1</a><br>
+<a href=ghost_checks_p=3N=1.pdf>p=3 and N=1</a><br>
+<a href=ghost_checks_p=5N=1.pdf>p=5 and N=1</a>
+<hr>
+
+<H3>Slopes</H3>
+
+Click <a href=slope_data/59slopes.txt>here</a> for a list of the slopes 
+of the Hecke operator T<sub>59</sub> acting on cuspforms of level one, 
+in even weights between 2 and 1640. 
+<br>
+Compare with the data on Gouv&#234;a's page 
+<a href=http://personal.colby.edu/personal/f/fqgouvea/slopes/exceptional.html>here</a>. 
+<br>
+Click <a href=slope_data/59slopes.sage>here</a> for this data in a SAGE readable format.
+<br>
+(The format for our file is (k,list) and list is another list containing pairs 
+[a,m<sub>a</sub>] meaning the slope a appear m<sub>a</sub>-many times.)
+
+<p>
+
+<b>Code</b>: The below MAGMA code allows one to compute the slopes of forms with a fixed residual 
+representation.  See the sample run for an explicit example.
+
+
+<p>
+<a href=rhobar_slopes.zip>MAGMA code here</a>
+<p>
+

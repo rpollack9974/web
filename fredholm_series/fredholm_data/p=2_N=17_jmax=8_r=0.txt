@@ -1,0 +1,69 @@
+p=2, N=17, j_max=8, r=0
+
+Trace of U_p^j data:
+0:
+	 mu = +Infinity
+	 lm = +Infinity
+	 slopes:[]
+1:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+2:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+3:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+4:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+5:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+6:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+7:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+
+Coefficient data:
+0:
+	 mu = +Infinity
+	 lm = +Infinity
+	 slopes:[]
+1:
+	 mu = 1
+	 lm = 0
+	 slopes:[]
+2:
+	 mu = 0
+	 lm = 0
+	 slopes:[]
+3:
+	 mu = 2
+	 lm = 1
+	 slopes:[1]
+4:
+	 mu = 0
+	 lm = 2
+	 slopes:[2, 1]
+5:
+	 mu = 1
+	 lm = 2
+	 slopes:[3, 1]
+6:
+	 mu = 0
+	 lm = 2
+	 slopes:[2, 2]
+7:
+	 mu = 1
+	 lm = 7
+	 slopes:[3, 1, 2/5, 2/5, 2/5, 2/5, 2/5]
